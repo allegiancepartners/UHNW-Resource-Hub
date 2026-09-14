@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UHNW Reference Library — Illustrative Example · Allegiance Partners</title>
+<style>
+  :root{
+    --teal-900:#0a2540;
+    --teal-700:#123a63;
+    --teal-600:#1b4f82;
+    --teal-500:#3572ad;
+    --teal-100:#e8eef6;
+    --coral-600:#b8860b;
+    --coral-100:#faf1dc;
+    --ink-900:#161b22;
+    --ink-600:#4b5563;
+    --ink-400:#818a95;
+    --paper:#f8f7f2;
+    --card:#ffffff;
+    --line:#e1e0d8;
+    --shadow:0 2px 10px rgba(10,37,64,0.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;
+    background:var(--paper);color:var(--ink-900);
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:28px 24px 64px;}
+
+  .page-nav{
+    display:flex;flex-wrap:nowrap;overflow-x:auto;gap:10px;
+    padding:14px 0;margin-bottom:18px;border-bottom:1px solid var(--line);
+  }
+  .nav-btn{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:0.82rem;font-weight:600;color:var(--teal-900);text-decoration:none;
+    background:var(--card);border:1px solid var(--line);border-radius:20px;
+    padding:8px 16px;transition:all .15s ease;
+  }
+  .nav-btn:hover{border-color:var(--coral-600);box-shadow:var(--shadow);}
+  .nav-btn.active{background:var(--teal-600);color:#fff;border-color:var(--teal-600);}
+
+  .hero{
+    background:linear-gradient(135deg,var(--teal-900),var(--teal-600));
+    color:#fff;border-radius:16px;padding:32px 36px;
+    margin-bottom:28px;position:relative;overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;right:-60px;top:-60px;
+    width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.07);
+  }
+  .hero .brand-label{
+    color:var(--coral-600);font-size:0.78rem;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;
+  }
+  .hero h1{margin:0 0 8px;font-size:1.7rem;font-weight:700;letter-spacing:-0.01em;color:#fff;}
+  .hero p{margin:0;max-width:640px;color:rgba(255,255,255,0.88);line-height:1.55;font-size:0.97rem;}
+  .demo-flag{
+    display:inline-block;font-size:10px;font-weight:600;letter-spacing:.04em;
+    text-transform:uppercase;background:rgba(184,134,11,0.25);color:#f0c96e;
+    padding:2px 8px;border-radius:20px;margin-left:10px;vertical-align:2px;
+    border:1px solid rgba(184,134,11,0.4);
+  }
+
+  .disc{
+    background:var(--coral-100);border:0.5px solid #F0DFC0;
+    border-left:3px solid var(--coral-600);border-radius:0 8px 8px 0;
+    padding:12px 16px;font-size:12.5px;color:#63460b;margin-bottom:20px;line-height:1.6;
+  }
+  .info{
+    background:#E6F1FB;border-left:3px solid var(--teal-500);border-radius:0 8px 8px 0;
+    padding:12px 16px;font-size:13px;color:#0C447C;margin-bottom:14px;line-height:1.6;
+  }
+  .success{
+    background:#EAF3DE;border-left:3px solid #3B6D11;border-radius:0 8px 8px 0;
+    padding:12px 16px;font-size:13px;color:#1B4D1B;margin-bottom:14px;line-height:1.6;
+  }
+  .warn{
+    background:var(--coral-100);border-left:3px solid #A32D2D;border-radius:0 8px 8px 0;
+    padding:12px 16px;font-size:13px;color:#63460b;margin-bottom:14px;line-height:1.6;
+  }
+  .intro{font-size:13px;color:var(--ink-600);margin-bottom:20px;line-height:1.6;}
+
+  .toc{
+    background:var(--card);border:1px solid var(--line);
+    border-radius:14px;margin-bottom:26px;overflow:hidden;
+    box-shadow:var(--shadow);
+  }
+  .toc-row{
+    display:flex;gap:14px;align-items:flex-start;padding:13px 18px;
+    border-bottom:0.5px solid var(--line);text-decoration:none;color:inherit;
+    transition:background .12s;
+  }
+  .toc-row:last-child{border-bottom:none;}
+  .toc-row:hover{background:var(--teal-100);}
+  .toc-letter{flex:0 0 22px;font-weight:700;color:var(--teal-600);font-size:14px;}
+  .toc-title{flex:0 0 170px;font-weight:600;font-size:13px;color:var(--teal-900);}
+  .toc-desc{flex:1;font-size:12.5px;color:var(--ink-600);line-height:1.5;}
+
+  .app{
+    background:var(--card);border:1px solid var(--line);
+    border-radius:14px;margin-bottom:22px;overflow:hidden;
+    scroll-margin-top:80px;box-shadow:var(--shadow);
+  }
+  .app-banner{
+    background:var(--teal-900);padding:18px 24px;border-bottom:3px solid var(--coral-600);
+  }
+  .app-banner h2{color:#fff;margin-bottom:4px;font-size:1.05rem;font-weight:700;}
+  .app-banner .sub{color:rgba(199,208,224,0.9);margin-bottom:0;font-size:12.5px;}
+  .app-body{padding:20px 24px 22px;}
+
+  h3{font-size:14px;font-weight:700;color:var(--teal-900);margin:18px 0 8px;}
+  h3:first-child{margin-top:0;}
+  p{font-size:13px;color:var(--ink-900);line-height:1.6;margin-bottom:10px;}
+  .small{font-size:12px;color:var(--ink-600);line-height:1.55;}
+
+  ul{list-style:none;margin-bottom:12px;}
+  li{font-size:13px;line-height:1.55;margin-bottom:6px;padding-left:16px;position:relative;}
+  li::before{content:"•";position:absolute;left:0;color:var(--teal-500);}
+
+  .item{margin-bottom:10px;}
+  .item-t{font-weight:700;color:var(--teal-900);font-size:13px;margin-bottom:2px;}
+  .item-d{font-size:12.5px;color:var(--ink-600);line-height:1.5;}
+
+  table{width:100%;border-collapse:collapse;font-size:12.5px;margin-bottom:12px;}
+  th{font-size:11px;font-weight:600;color:#fff;background:var(--teal-900);padding:9px 12px;text-align:left;}
+  th.r,td.r{text-align:right;}
+  td{padding:8px 12px;border-bottom:0.5px solid var(--line);color:var(--ink-900);}
+  tr:nth-child(even) td{background:var(--teal-100);}
+
+  .back-top{text-align:right;margin-top:8px;}
+  .back-top a{font-size:11.5px;color:var(--teal-500);text-decoration:none;font-weight:600;}
+  .back-top a:hover{color:var(--coral-600);text-decoration:underline;}
+
+  .section-label{
+    font-size:0.72rem;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--coral-600);font-weight:700;margin:0 0 16px;
+  }
+
+  footer{
+    margin-top:40px;padding-top:18px;border-top:1px solid var(--line);
+    font-size:0.76rem;color:var(--ink-400);line-height:1.6;text-align:center;
+  }
+  footer strong{color:var(--teal-900);}
+
+  @media(max-width:600px){
+    .toc-row{flex-wrap:wrap;}
+    .toc-title{flex:1 0 100%;}
+    .wrap{padding:16px 14px 48px;}
+  }
+</style>
+</head>
+<body id="top">
+<div class="wrap">
+
+  <nav class="page-nav">
+  <a href="index.html" class="nav-btn">🏠 UHNW Resource Hub</a>
+  <a href="uhnw-navigator.html" class="nav-btn">🧭 UHNW Navigator</a>
+  <a href="uhnw-discovery-call.html" class="nav-btn">📞 Discovery Call</a>
+  <a href="uhnw-flowchart.html" class="nav-btn">🔁 Flowchart</a>
+  <a href="uhnw-wealth-transfer-toolkit.html" class="nav-btn">🧰 Wealth Transfer Toolkit</a>
+  <a href="uhnw-reference-library.html" class="nav-btn active">📚 Reference Library</a>
+  <a href="uhnw-estate-road-map.html" class="nav-btn">🗺️ Estate Planning Road Map</a>
+  <a href="uhnw-about-us.html" class="nav-btn">👥 About Us</a>
+  </nav>
+
+  <header class="hero">
+    <div class="brand-label">Allegiance Partners</div>
+    <h1>UHNW Reference Library <span class="demo-flag">Illustrative Example</span></h1>
+    <p>A companion reference to the Wealth Transfer Toolkit &nbsp;·&nbsp; Allegiance Partners &nbsp;·&nbsp; New York Edition &nbsp;·&nbsp; 2026</p>
+  </header>
+
+<div class="disc">This document is provided for informational and educational purposes only and does not constitute legal, tax, or investment advice. Allegiance Partners does not act as your attorney or CPA. It is an <strong>illustrative example</strong>, not specific to any individual family, and all names, figures, and fact patterns below are generic and for discussion purposes only. Please consult your own CPA and/or attorney before executing any strategy described here.</div>
+
+<p class="intro">Eight appendices selected from Allegiance's standard estate-and-tax-planning appendix set, illustrating the depth of analysis behind the Wealth Transfer Toolkit. All figures below are consistent with the Toolkit's own illustrative base case: a New York resident, $20,000,000 held personally and $10,000,000 already funded into a Dynasty Trust, age 55, with a 29-year horizon to an SSA-projected life expectancy of 84.</p>
+
+<div class="toc">
+  <a class="toc-row" href="#appB"><span class="toc-letter">B</span><span class="toc-title">Basic Estate Plan</span><span class="toc-desc">Will, POA, healthcare proxy. NY estate tax cliff ($7.35M). Federal $15M exemption. $19K annual gift exclusion. $30M combined on marriage.</span></a>
+  <a class="toc-row" href="#appH"><span class="toc-letter">H</span><span class="toc-title">Lifetime Gifting &amp; GST Exemption</span><span class="toc-desc">Annual exclusion gifting, the unified $15M lifetime exemption, and allocating GST exemption to shelter a Dynasty Trust indefinitely.</span></a>
+  <a class="toc-row" href="#appD"><span class="toc-letter">D</span><span class="toc-title">Dynasty Trust</span><span class="toc-desc">Delaware dynasty trust for the family's descendants. Funding timing, trustee selection, and multi-generational design.</span></a>
+  <a class="toc-row" href="#appE"><span class="toc-letter">E</span><span class="toc-title">Trust Situs — Delaware</span><span class="toc-desc">Why Delaware: no state income tax on trust income, no Rule Against Perpetuities, directed trust statute, asset protection, privacy.</span></a>
+  <a class="toc-row" href="#appG"><span class="toc-letter">G</span><span class="toc-title">Grantor vs. Non-Grantor Trusts</span><span class="toc-desc">Income tax treatment and who pays. SLAT &amp; SLANT presented as spousal-access examples.</span></a>
+  <a class="toc-row" href="#appI"><span class="toc-letter">I</span><span class="toc-title">Grantor Retained Annuity Trusts (GRATs)</span><span class="toc-desc">A short-term, low-risk technique for transferring the appreciation on volatile or concentrated assets at little to no gift tax cost.</span></a>
+  <a class="toc-row" href="#appJ"><span class="toc-letter">J</span><span class="toc-title">Charitable Giving Vehicles</span><span class="toc-desc">Donor Advised Fund, Charitable Remainder Unitrust, and private foundation compared for tax-efficient philanthropy.</span></a>
+  <a class="toc-row" href="#appK"><span class="toc-letter">K</span><span class="toc-title">Private Placement Life Insurance (PPLI)</span><span class="toc-desc">Tax-exempt growth inside a life insurance wrapper — an advanced, later-stage alternative or complement to a Dynasty Trust.</span></a>
+  <a class="toc-row" href="#appM"><span class="toc-letter">M</span><span class="toc-title">Estate Freeze Analysis</span><span class="toc-desc">Grantor vs. Non-Grantor vs. Unplanned — consolidated family wealth, 29-year projection to life expectancy.</span></a>
+</div>
+
+<!-- ================= APPENDIX B ================= -->
+<section class="app" id="appB">
+  <div class="app-banner">
+    <h2>Appendix B — Basic Estate Plan</h2>
+    <p class="sub">Illustrative New York Family &nbsp;·&nbsp; Allegiance Partners &nbsp;·&nbsp; 2026</p>
+  </div>
+  <div class="app-body">
+    <h3>Overview</h3>
+    <p>A foundational estate plan establishes the legal framework for asset transfer, incapacity management, and wealth preservation. For a family with significant existing wealth, this baseline layer is essential before more complex structures — the Dynasty Trust, grantor trust elections, charitable vehicles — are layered on top. Allegiance recommends engaging a trusts &amp; estates attorney from its Trusted Advisor Bench to complete the Basic Estate Plan.</p>
+
+    <h3>Core Documents Required</h3>
+    <div class="item"><div class="item-t">Last Will &amp; Testament</div><div class="item-d">Directs disposition of probate assets; names executor and guardian designations for minor children, if applicable.</div></div>
+    <div class="item"><div class="item-t">Revocable Living Trust</div><div class="item-d">Avoids probate for NY real property; coordinates with the Dynasty Trust and other planning vehicles.</div></div>
+    <div class="item"><div class="item-t">Durable Power of Attorney</div><div class="item-d">Authorizes an agent to manage financial affairs during incapacity.</div></div>
+    <div class="item"><div class="item-t">Healthcare Proxy / HIPAA Authorization</div><div class="item-d">Designates a healthcare decision-maker; HIPAA authorization for medical record access.</div></div>
+    <div class="item"><div class="item-t">Living Will / Advance Directive</div><div class="item-d">Documents end-of-life care preferences. Required under NY Health Care Proxy Law.</div></div>
+
+    <h3>NY Estate Tax — The Cliff Effect</h3>
+    <div class="warn">New York imposes an estate tax with a distinctive <strong>"cliff" phase-out</strong>: the state's basic exclusion amount is <strong>$7,350,000</strong> for 2026, but for estates between 100% and 105% of that amount, the exclusion is phased out on a sliding scale rather than lost all at once — and above roughly <strong>105% (~$7,717,500)</strong>, none of the exclusion applies. This produces an unusually punitive effective marginal rate in that band, well above the top statutory rate.</div>
+    <ul>
+      <li>NY exemption (2026): <strong>$7,350,000</strong></li>
+      <li>Cliff threshold (105% of exemption): <strong>~$7,717,500</strong> — above this, none of the exclusion applies</li>
+      <li>Top rate on amounts above the exemption: <strong>16%</strong></li>
+      <li>Planning action: use the Dynasty Trust to remove assets from the gross estate entirely</li>
+    </ul>
+
+    <h3>Federal Estate Tax Parameters (2026)</h3>
+    <table>
+      <tbody><tr><th>Parameter</th><th>Value</th></tr>
+      <tr><td>Federal lifetime exemption</td><td>$15,000,000 per individual</td></tr>
+      <tr><td>Portability (unused exemption to spouse)</td><td>Available — elect on timely filed estate tax return</td></tr>
+      <tr><td>Federal estate tax rate</td><td>40% on amounts above exemption</td></tr>
+      <tr><td>Annual gift tax exclusion</td><td>$19,000 per recipient per year</td></tr>
+      <tr><td>Gift to Dynasty Trust</td><td>Counts against lifetime exemption; file Form 709</td></tr>
+    </tbody></table>
+
+    <h3>Immediate Priorities</h3>
+    <ul>
+      <li>Draft and execute all core documents — engage T&amp;E counsel now</li>
+      <li>Name an executor and trustee — consider an institutional trustee for the Dynasty Trust</li>
+      <li>Establish and fund the Dynasty Trust now — see Appendix D</li>
+      <li>Use the $19,000/year annual gift exclusion per beneficiary to fund the trust incrementally</li>
+      <li>Review beneficiary designations on all financial accounts and retirement plans</li>
+      <li>Upon marriage, the exemption doubles to $30M combined — plan SLAT/SLANT at that stage (Appendix G)</li>
+    </ul>
+    <div class="back-top"><a href="#top">↑ Back to top</a></div>
+  </div>
+</section>
+
+<!-- ================= APPENDIX H ================= -->
+<section class="app" id="appH">
+  <div class="app-banner">
+    <h2>Appendix H — Lifetime Gifting &amp; GST Exemption</h2>
+    <p class="sub">Annual Exclusion, Lifetime Exemption &amp; Generation-Skipping Transfer Tax &nbsp;·&nbsp; Illustrative Example &nbsp;·&nbsp; 2026</p>
+  </div>
+  <div class="app-body">
+    <h3>The Three Layers of Gift &amp; Transfer Tax Planning</h3>
+    <p>Moving wealth to the next generation efficiently means using three complementary tools in sequence: the annual exclusion (use it or lose it, every year), the lifetime gift/estate exemption (a large, one-time allowance), and the generation-skipping transfer (GST) exemption (a separate allowance that protects gifts to grandchildren and later generations from an additional layer of tax).</p>
+
+    <h3>Annual Exclusion Gifts</h3>
+    <table>
+      <tbody><tr><th>Parameter</th><th>Value (2026)</th></tr>
+      <tr><td>Per recipient, per year</td><td>$19,000</td></tr>
+      <tr><td>Married couple, gift-splitting</td><td>$38,000 per recipient</td></tr>
+      <tr><td>Lifetime exemption used</td><td>None — resets every calendar year</td></tr>
+      <tr><td>Gift tax return required</td><td>No, unless gift-splitting is elected</td></tr>
+    </tbody></table>
+    <p>A family with, for example, three children and their spouses, plus six grandchildren, could gift over $200,000 per year to that group under the annual exclusion alone (assuming gift-splitting) — without touching a dollar of lifetime exemption.</p>
+
+    <h3>Lifetime Gift &amp; Estate Exemption</h3>
+    <table>
+      <tbody><tr><th>Parameter</th><th>Value (2026)</th></tr>
+      <tr><td>Individual basic exclusion amount</td><td>$15,000,000</td></tr>
+      <tr><td>Married couple (portability or gift-splitting)</td><td>$30,000,000</td></tr>
+      <tr><td>Unified across gift and estate tax</td><td>Yes — a single lifetime number, used by either mechanism</td></tr>
+      <tr><td>Reporting</td><td>Form 709, filed for the calendar year of the gift</td></tr>
+    </tbody></table>
+
+    <h3>Generation-Skipping Transfer (GST) Tax Exemption</h3>
+    <p>The GST tax is a separate, flat 40% tax that applies when assets skip a generation — for example, passing from grandparent directly to grandchild. Each individual also has a GST exemption equal to the same $15,000,000 (2026) as the gift/estate exemption. Allocating GST exemption to the Dynasty Trust on a timely filed Form 709 makes the trust "GST-exempt" — meaning distributions to grandchildren, great-grandchildren, and later generations avoid GST tax entirely, for as long as the trust exists.</p>
+    <div class="success"><strong>Why fund early:</strong> allocating exemption against today's contribution locks in GST-exempt status for all future appreciation as well — a $10,000,000 gift today that grows to $60,000,000 over several decades remains entirely GST-exempt, using only $10,000,000 of exemption.</div>
+
+    <h3>Illustrative Application</h3>
+    <table>
+      <tbody><tr><th>Taxpayer</th><th class="r">Exemption Used</th><th class="r">Exemption Remaining</th></tr>
+      <tr><td>Individual — Dynasty Trust funding</td><td class="r">$10,000,000</td><td class="r">$5,000,000</td></tr>
+      <tr><td>GST exemption allocated (same trust)</td><td class="r">$10,000,000</td><td class="r">$5,000,000</td></tr>
+    </tbody></table>
+    <p class="small">Action: confirm the exemption allocation strategy with T&amp;E counsel and CPA before any gift is made, and file Form 709 by the applicable deadline.</p>
+    <div class="back-top"><a href="#top">↑ Back to top</a></div>
+  </div>
+</section>
+
+<!-- ================= APPENDIX D ================= -->
+<section class="app" id="appD">
+  <div class="app-banner">
+    <h2>Appendix D — Dynasty Trust</h2>
+    <p class="sub">Delaware Dynasty Trust for the Family's Descendants &nbsp;·&nbsp; Illustrative Structure &nbsp;·&nbsp; 2026</p>
+  </div>
+  <div class="app-body">
+    <h3>What Is the Dynasty Trust?</h3>
+    <p>The Dynasty Trust is an irrevocable trust established to hold a portion of the family's wealth — illustrated here at <strong>$10,000,000</strong> — for the benefit of the family's descendants (children, current or future, and grandchildren). Delaware situs is recommended for its favorable trust law (Appendix E) and its abolition of the Rule Against Perpetuities, allowing the trust to benefit multiple generations without a forced termination date.</p>
+
+    <h3>Key Structural Features</h3>
+    <ul>
+      <li><strong>Situs:</strong> Delaware — no state income tax on undistributed trust income; strong privacy laws</li>
+      <li><strong>Irrevocable</strong> — assets removed from the family's estate; spendthrift provisions protect from creditors</li>
+      <li><strong>Beneficiaries:</strong> the family's descendants — a true multi-generational, dynasty structure</li>
+      <li><strong>Flexible distributions</strong> — trustee has discretion over income/principal distributions to beneficiaries</li>
+      <li><strong>Grantor trust option</strong> — the family can pay trust income taxes personally, an additional tax-free gift at the family's own rate (Appendix G)</li>
+    </ul>
+
+    <h3>Funding Timing</h3>
+    <p>Funding the trust now, at today's asset values, uses exemption at today's dollar amount — while all future appreciation compounds outside the estate. Funding the same $10,000,000 slice a decade from now, after it has grown, would use far more exemption (or leave far more exposed to estate tax if exemption has run out) than funding it today. Funding early, and allocating GST exemption at the same time (Appendix H), is one of the highest-value planning actions available.</p>
+
+    <h3>Trustee Selection</h3>
+    <ul>
+      <li>Independent individual trustee — flexibility, personal relationship, lower cost; succession risk</li>
+      <li>Institutional / corporate trustee (bank trust dept.) — continuity, expertise, regulated; higher cost</li>
+      <li>Directed trust structure — institutional administrative trustee + investment advisor (Allegiance) as advisor</li>
+      <li>Trust Protector — third party with power to modify trust, change trustees, or adapt to law changes</li>
+    </ul>
+
+    <h3>Beneficiary Designations</h3>
+    <p>Beneficiaries: the family's descendants — children and grandchildren, current or future. As a true dynasty structure, the trust is designed to benefit not only the first generation but their descendants as well, taking advantage of Delaware's abolition of the Rule Against Perpetuities.</p>
+    <p class="small">Action: confirm structure and drafting with T&amp;E counsel before funding.</p>
+    <div class="back-top"><a href="#top">↑ Back to top</a></div>
+  </div>
+</section>
+
+<!-- ================= APPENDIX E ================= -->
+<section class="app" id="appE">
+  <div class="app-banner">
+    <h2>Appendix E — Trust Situs</h2>
+    <p class="sub">Delaware as Optimal Trust Jurisdiction &nbsp;·&nbsp; Illustrative Example &nbsp;·&nbsp; 2026</p>
+  </div>
+  <div class="app-body">
+    <h3>Why Delaware?</h3>
+    <p>Trust situs (legal jurisdiction) determines which state's laws govern the trust and whether undistributed trust income is subject to state income tax. Delaware offers the most favorable combination of tax treatment, legal flexibility, privacy, and duration for the Dynasty Trust.</p>
+
+    <h3>Delaware Advantages</h3>
+    <div class="item"><div class="item-t">No State Income Tax</div><div class="item-d">DE does not tax undistributed income of a trust with no DE-resident beneficiaries. The Dynasty Trust avoids both NY State (10.9%) and NYC (3.876%, where applicable) income tax at the trust level.</div></div>
+    <div class="item"><div class="item-t">No Rule Against Perpetuities</div><div class="item-d">DE abolished the RAP in 1995. Trusts can last for a very long duration. New York, by contrast, has an 85-year RAP.</div></div>
+    <div class="item"><div class="item-t">Directed Trust Statute</div><div class="item-d">DE allows bifurcation of trustee duties — separate investment advisor (Allegiance) and administrative trustee. Maximizes flexibility and professional management.</div></div>
+    <div class="item"><div class="item-t">Asset Protection</div><div class="item-d">Strong spendthrift and creditor protection provisions. Trust assets insulated from beneficiary creditors, divorce claims, and judgments.</div></div>
+    <div class="item"><div class="item-t">Privacy</div><div class="item-d">DE court records relating to trusts are not public. No public registration of trust terms required.</div></div>
+    <div class="item"><div class="item-t">Legal Sophistication</div><div class="item-d">DE has the most developed body of trust law; Delaware Court of Chancery provides expert trust dispute resolution.</div></div>
+
+    <h3>Comparison: NY vs. Delaware Trust Situs</h3>
+    <table>
+      <tbody><tr><th>Feature</th><th>New York</th><th>Delaware</th></tr>
+      <tr><td>Income tax on trust</td><td>Yes — up to 10.9% (NYS), plus NYC where applicable</td><td>No — if no DE-resident beneficiaries</td></tr>
+      <tr><td>Perpetuity / RAP</td><td>85-year maximum (NY EPTL)</td><td>No RAP — very long duration permitted</td></tr>
+      <tr><td>Directed trust statute</td><td>Limited</td><td>Full bifurcation allowed</td></tr>
+      <tr><td>Asset protection</td><td>Moderate</td><td>Strong spendthrift protection</td></tr>
+      <tr><td>Privacy</td><td>Court records may be public</td><td>Non-public; no registration</td></tr>
+      <tr><td>Trust law body</td><td>EPTL — established but less flexible</td><td>Chancery Court — sophisticated</td></tr>
+    </tbody></table>
+    <div class="back-top"><a href="#top">↑ Back to top</a></div>
+  </div>
+</section>
+
+<!-- ================= APPENDIX G ================= -->
+<section class="app" id="appG">
+  <div class="app-banner">
+    <h2>Appendix G — Grantor vs. Non-Grantor Trusts</h2>
+    <p class="sub">Income Tax Treatment &nbsp;·&nbsp; SLAT &amp; SLANT as Examples &nbsp;·&nbsp; Illustrative Example &nbsp;·&nbsp; 2026</p>
+  </div>
+  <div class="app-body">
+    <h3>Grantor vs. Non-Grantor Trust — Income Tax Treatment</h3>
+    <p>Every irrevocable trust is classified as either a Grantor Trust or a Non-Grantor Trust for income tax purposes. This classification determines who pays the income tax on trust earnings — and has profound implications for how quickly the trust corpus compounds (see Appendix M).</p>
+    <div class="item"><div class="item-t">Grantor Trust</div><div class="item-d">The family pays income tax on ALL trust income personally, at their own rate. The trust itself pays no tax. Each tax payment is effectively an additional tax-free gift to the trust — supercharging growth. The trust corpus compounds at the full gross return.</div></div>
+    <div class="item"><div class="item-t">Non-Grantor Trust</div><div class="item-d">The trust is a separate taxpayer. It pays its own income tax on earnings at trust tax rates. The trust corpus compounds at the net after-tax return. No additional depletion of the family's personal estate from tax payments.</div></div>
+    <div class="item"><div class="item-t">The Trade-Off</div><div class="item-d">Grantor Trust: faster corpus growth, additional estate depletion via tax payments — best for families with outside liquidity to absorb the tax bill. Non-Grantor: simpler, self-contained, still outside the estate. See Appendix M for the 29-year consolidated family wealth comparison.</div></div>
+
+    <h3>SLAT &amp; SLANT — Spousal Trust Examples</h3>
+    <p>SLATs and SLANTs are irrevocable trusts that include a spouse as a lifetime beneficiary, offering estate-tax removal while preserving indirect access to the assets through the spouse.</p>
+    <div class="item"><div class="item-t">SLAT — Spousal Lifetime Access Trust</div><div class="item-d">Irrevocable trust; grantor spouse transfers assets; beneficiary spouse has discretionary access. Because the beneficiary spouse can benefit, the trust is treated as a grantor trust for income tax purposes.</div></div>
+    <div class="item"><div class="item-t">SLANT — Spousal Lifetime Access Non-Grantor Trust</div><div class="item-d">A SLAT drafted so that an "adverse party's" consent is required for distributions — breaking grantor trust status, so the trust becomes its own separate taxpayer instead.</div></div>
+
+    <h3>Comparison Table</h3>
+    <table>
+      <tbody><tr><th>Feature</th><th>Dynasty Trust</th><th>SLANT</th><th>SLAT</th></tr>
+      <tr><td>Spousal access</td><td>No</td><td>Limited</td><td>Yes</td></tr>
+      <tr><td>Estate removal</td><td>YES</td><td>YES</td><td>YES</td></tr>
+      <tr><td>Income tax treatment</td><td>Elective (grantor or non-grantor)</td><td>Non-grantor</td><td>Grantor</td></tr>
+      <tr><td>State income tax avoided</td><td>YES (DE trust)</td><td>If DE sited</td><td>If DE sited</td></tr>
+    </tbody></table>
+
+    <div class="success"><strong>Illustrative note:</strong> the Dynasty Trust here is established without spousal provisions. A SLAT or SLANT becomes relevant when a family wants to preserve some indirect access to gifted assets through a spouse — worth revisiting with T&amp;E counsel if that goal applies.</div>
+    <div class="back-top"><a href="#top">↑ Back to top</a></div>
+  </div>
+</section>
+
+<!-- ================= APPENDIX I ================= -->
+<section class="app" id="appI">
+  <div class="app-banner">
+    <h2>Appendix I — Grantor Retained Annuity Trusts (GRATs)</h2>
+    <p class="sub">Transferring Appreciation at Little to No Gift Tax Cost &nbsp;·&nbsp; Illustrative Example &nbsp;·&nbsp; 2026</p>
+  </div>
+  <div class="app-body">
+    <h3>What Is a GRAT?</h3>
+    <p>A Grantor Retained Annuity Trust is an irrevocable trust into which a grantor contributes assets and, in return, receives a fixed annuity payment for a set term (often 2–10 years). At the end of the term, whatever remains in the trust — including all appreciation above the IRS's assumed interest rate (the §7520 rate) — passes to the named beneficiaries with little or no gift tax cost.</p>
+
+    <h3>Why It Works Well for Volatile or Concentrated Assets</h3>
+    <ul>
+      <li>A "zeroed-out" GRAT can be structured so the annuity payments return the full value contributed (plus the §7520 rate) — meaning the taxable gift at funding is close to $0</li>
+      <li>Any growth above the §7520 rate passes to beneficiaries gift-tax-free at the end of the term</li>
+      <li>Well suited to a single concentrated, volatile position — a family can run several short-term GRATs in sequence ("rolling GRATs") to capture upside while limiting downside if a GRAT underperforms and simply terminates with nothing extra passing</li>
+      <li>If the grantor dies during the GRAT term, the remaining trust assets are pulled back into the taxable estate — a mortality risk best evaluated with T&amp;E counsel</li>
+    </ul>
+
+    <h3>GRAT vs. Dynasty Trust — Different Tools for Different Assets</h3>
+    <table>
+      <tbody><tr><th>Feature</th><th>GRAT</th><th>Dynasty Trust</th></tr>
+      <tr><td>Term</td><td>Fixed, short (2–10 years)</td><td>Perpetual (Delaware situs)</td></tr>
+      <tr><td>Gift tax cost at funding</td><td>Near $0 if zeroed-out</td><td>Full value gifted, uses exemption</td></tr>
+      <tr><td>GST exemption use</td><td>Generally not GST-exempt — not ideal for grandchildren</td><td>Can be made fully GST-exempt</td></tr>
+      <tr><td>Best suited to</td><td>A single volatile or concentrated asset expected to outperform the §7520 rate</td><td>Long-term, multi-generational wealth transfer</td></tr>
+    </tbody></table>
+    <p class="small">Action: T&amp;E counsel and CPA can identify whether a specific concentrated position (a security, a piece of real estate, an interest in a closely held entity) is a good GRAT candidate, and confirm the current §7520 rate at time of funding.</p>
+    <div class="back-top"><a href="#top">↑ Back to top</a></div>
+  </div>
+</section>
+
+<!-- ================= APPENDIX J ================= -->
+<section class="app" id="appJ">
+  <div class="app-banner">
+    <h2>Appendix J — Charitable Giving Vehicles</h2>
+    <p class="sub">DAF, CRUT, Foundation &nbsp;·&nbsp; Illustrative Example &nbsp;·&nbsp; 2026</p>
+  </div>
+  <div class="app-body">
+    <h3>Overview</h3>
+    <p>Charitable giving is both a values-based decision and a planning opportunity. Vehicles range from simple (DAF) to sophisticated (private foundation), each with different control, income, and deduction characteristics.</p>
+
+    <h3>Donor Advised Fund (DAF)</h3>
+    <ul>
+      <li>Simplest vehicle — contribution is irrevocable; grants recommended over time</li>
+      <li>Deduction: FMV of assets contributed; avoids capital gains on appreciated stock or securities</li>
+      <li>Minimum contribution: $5,000 (Fidelity Charitable, Schwab Charitable, others)</li>
+      <li>No annual payout requirement — flexible grant timing</li>
+      <li>Best for: an immediate deduction plus ongoing, flexible philanthropy</li>
+    </ul>
+
+    <h3>Charitable Remainder Unitrust (CRUT)</h3>
+    <ul>
+      <li>Contribute appreciated stock or other assets — no immediate capital gains tax</li>
+      <li>Trust pays out a fixed % (commonly ~5%) of corpus annually to the family for life or a term of years</li>
+      <li>Remainder to charity at termination — partially deductible at contribution</li>
+      <li>Creates a diversified income stream from a concentrated appreciated position</li>
+      <li>Best for: income need + charitable intent + a large appreciated position</li>
+    </ul>
+
+    <h3>Private Foundation</h3>
+    <ul>
+      <li>Full control over grant-making; family members can serve as officers</li>
+      <li>Deduction limited to 30% AGI (cash) / 20% AGI (appreciated property)</li>
+      <li>5% annual distribution requirement; excise taxes on investment income</li>
+      <li>Best for: significant philanthropic intent, family legacy, and multi-generational grant-making control</li>
+      <li>Higher administrative cost; subject to self-dealing rules</li>
+    </ul>
+
+    <div class="success"><strong>A common pattern:</strong> establish a DAF for straightforward, flexible giving, and consider a CRUT where a large appreciated position also needs to generate income. A private foundation is typically reserved for families with a significant, ongoing philanthropic commitment and a desire for hands-on grant-making control across generations.</div>
+    <div class="back-top"><a href="#top">↑ Back to top</a></div>
+  </div>
+</section>
+
+<!-- ================= APPENDIX K ================= -->
+<section class="app" id="appK">
+  <div class="app-banner">
+    <h2>Appendix K — Private Placement Life Insurance (PPLI)</h2>
+    <p class="sub">Tax-Exempt Growth Inside a Life Insurance Wrapper &nbsp;·&nbsp; Illustrative Example &nbsp;·&nbsp; 2026</p>
+  </div>
+  <div class="app-body">
+    <h3>What Is PPLI?</h3>
+    <p>Private Placement Life Insurance is a variable life insurance policy, customized for high-net-worth investors, that wraps an investment portfolio in a life insurance contract. Because the policy is life insurance under the tax code, investment growth inside it is not subject to annual income tax, and death benefits pass to beneficiaries income-tax-free.</p>
+
+    <h3>Where It Fits Alongside a Dynasty Trust</h3>
+    <ul>
+      <li>A PPLI policy can be owned by the Dynasty Trust itself — combining the trust's estate-tax removal with the policy's income-tax-free growth</li>
+      <li>Particularly effective for tax-inefficient investment strategies (frequent trading, hedge-fund-style strategies) that would otherwise generate significant annual taxable income</li>
+      <li>Best suited to families who have already used core trust and gifting strategies and are looking for an additional, more advanced layer</li>
+      <li>Requires meaningful minimum premium levels and ongoing policy administration — not a first step, but a later-stage option</li>
+    </ul>
+
+    <h3>Key Considerations</h3>
+    <table>
+      <tbody><tr><th>Feature</th><th>Detail</th></tr>
+      <tr><td>Income tax on growth</td><td>None, while held inside the policy</td></tr>
+      <tr><td>Death benefit</td><td>Passes income-tax-free to beneficiaries</td></tr>
+      <tr><td>Estate tax</td><td>Removed from the estate only if properly owned outside the insured's estate (e.g., by an irrevocable trust)</td></tr>
+      <tr><td>Investment flexibility</td><td>Broad, but subject to IRS diversification and investor-control rules</td></tr>
+      <tr><td>Typical entry point</td><td>Multi-million dollar premium commitments; more established in international (e.g., European) markets than in the US</td></tr>
+    </tbody></table>
+    <p class="small">Allegiance's PPLI structuring work is done in partnership with International Wealth Protection in Zurich — see Advisor Team on the Wealth Transfer Toolkit page.</p>
+    <div class="back-top"><a href="#top">↑ Back to top</a></div>
+  </div>
+</section>
+
+<!-- ================= APPENDIX M ================= -->
+<section class="app" id="appM">
+  <div class="app-banner">
+    <h2>Appendix M — Estate Freeze Analysis</h2>
+    <p class="sub">Consolidated Family Wealth &nbsp;·&nbsp; 29-Year Projection to Life Expectancy &nbsp;·&nbsp; Illustrative Example &nbsp;·&nbsp; 2026</p>
+  </div>
+  <div class="app-body">
+    <h3>What Is an Estate Freeze — and Why Does It Matter?</h3>
+    <p>An estate freeze transfers appreciating assets into the Dynasty Trust today, so that all future growth accrues outside the taxable estate. The question is not just "how big does the trust get?" — it is "how much does the family receive in total, after estate tax, compared to doing nothing?" The three scenarios below compare all assets on a consolidated basis from the same starting point.</p>
+    <p>Same starting capital in all cases: personal assets held outside any trust <strong>$20,000,000</strong> + Dynasty Trust <strong>$10,000,000</strong> = <strong>$30,000,000</strong>. Age today: <strong>55</strong> · Life expectancy: <strong>84</strong> (SSA actuarial default, female) · <strong>29 years</strong> of compounding.</p>
+    <p>Gross return: <strong>6.5%</strong> · Combined income tax rate: <strong>32.0%</strong> · Net after-tax: <strong>~4.42%</strong> · Grantor Trust: <strong>6.5%</strong> (full gross) · Estate tax: Federal 40% (above $15M exemption) + NY 16% (cliff triggered on estates this size) — figures mirror the interactive Estate Freeze calculator in the Wealth Transfer Toolkit at its default settings.</p>
+
+    <h3>Consolidated Family Wealth at Death (Life Expectancy) — All Assets, After Estate Tax</h3>
+    <table>
+      <tbody><tr><th>Scenario</th><th class="r">Taxable Estate at Death</th><th class="r">Estate Tax (Fed + NY)</th><th class="r">Net to Family (Total)</th><th class="r">Advantage vs. Unplanned</th></tr>
+      <tr><td>UNPLANNED</td><td class="r">$105,159,432</td><td class="r">$52,889,282</td><td class="r">$52,270,150</td><td class="r">—</td></tr>
+      <tr><td>NON-GRANTOR TRUST</td><td class="r">$70,106,288 *</td><td class="r">$33,259,521</td><td class="r">$71,899,911</td><td class="r">+$19,629,761</td></tr>
+      <tr><td>GRANTOR TRUST</td><td class="r">$43,052,708 *</td><td class="r">$18,109,516</td><td class="r">$87,049,916</td><td class="r">+$34,779,766</td></tr>
+    </tbody></table>
+    <p class="small">* Non-Grantor: taxable estate is the family's personal assets only — the trust's $35,053,144 passes estate-tax free (included in Net to Family, not shown separately). Grantor: the family pays the trust's income tax personally each year; at life expectancy the model shows personal assets of $43,052,708 remaining (no swap/toggle to non-grantor status was triggered over this horizon) while the trust itself has grown to $62,106,725, passing entirely free of estate tax.</p>
+
+    <h3>Why the Estate Freeze Wins — Despite Starting with the Same Capital</h3>
+    <ul>
+      <li>Grantor Trust advantage vs. Unplanned: <strong>+$34,779,766</strong> to family at life expectancy</li>
+      <li>The trust passes estate-tax free; the unplanned estate loses roughly half its value to estate tax on its own growth</li>
+      <li>Grantor election adds a further <strong>$15,150,005</strong> vs. Non-Grantor — from paying the trust's tax bill personally, an additional tax-free gift</li>
+    </ul>
+
+    <h3>Net to Family at Key Milestones (All Assets, After Estate Tax)</h3>
+    <table>
+      <tbody><tr><th>Year</th><th class="r">Unplanned</th><th class="r">Non-Grantor</th><th class="r">Grantor Trust</th></tr>
+      <tr><td>Year 5 (age 60)</td><td class="r">$22,386,733</td><td class="r">$29,338,680</td><td class="r">$30,059,218</td></tr>
+      <tr><td>Year 10 (age 65)</td><td class="r">$26,342,804</td><td class="r">$34,973,085</td><td class="r">$36,854,774</td></tr>
+      <tr><td>Year 15 (age 70)</td><td class="r">$31,253,947</td><td class="r">$41,967,743</td><td class="r">$45,656,257</td></tr>
+      <tr><td>Year 20 (age 75)</td><td class="r">$37,350,734</td><td class="r">$50,651,045</td><td class="r">$57,083,146</td></tr>
+      <tr><td>Year 25 (age 80)</td><td class="r">$44,919,401</td><td class="r">$61,430,663</td><td class="r">$71,954,517</td></tr>
+      <tr><td>Year 29 (age 84)</td><td class="r">$52,270,150</td><td class="r">$71,899,911</td><td class="r">$87,049,916</td></tr>
+    </tbody></table>
+    <p class="small">All scenarios start from identical capital: $30,000,000. Estate tax applied at death in each year shown. Grantor Trust: the family pays trust income tax personally; the trust passes free of estate tax. Figures mirror the interactive Estate Freeze calculator in the Wealth Transfer Toolkit at its default settings.</p>
+    <div class="back-top"><a href="#top">↑ Back to top</a></div>
+  </div>
+</section>
+
+<footer>© <strong>Allegiance Partners</strong> 2026. Illustrative example — not specific to any individual family. Does not constitute legal, tax, or investment advice.</footer>
+
+</div>
+</body>
+</html>

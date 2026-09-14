@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estate Planning Road Map — Illustrative Example · Allegiance Partners</title>
+<style>
+:root{
+  --teal-900:#0a2540;
+  --teal-700:#123a63;
+  --teal-600:#1b4f82;
+  --teal-500:#3572ad;
+  --teal-100:#e8eef6;
+  --coral-600:#b8860b;
+  --coral-100:#faf1dc;
+  --ink-900:#161b22;
+  --ink-600:#4b5563;
+  --ink-400:#818a95;
+  --paper:#f8f7f2;
+  --card:#ffffff;
+  --line:#e1e0d8;
+  --shadow: 0 2px 10px rgba(10,37,64,0.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;background:var(--paper);color:var(--ink-900);font-size:14px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 24px 64px;}
+
+header.hero{
+  background:linear-gradient(135deg, var(--teal-900), var(--teal-600));
+  color:#fff;border-radius:16px;padding:32px 36px;margin-bottom:28px;position:relative;overflow:hidden;
+}
+header.hero::after{
+  content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;
+  border-radius:50%;background:rgba(255,255,255,0.07);
+}
+header.hero .brand-label{color:var(--coral-600);font-size:0.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;}
+header.hero h1{margin:0 0 8px;font-size:1.7rem;font-weight:700;letter-spacing:-0.01em;}
+header.hero p{margin:0;max-width:640px;color:rgba(255,255,255,0.88);line-height:1.55;font-size:0.97rem;}
+.demo-flag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:var(--coral-600);color:#fff;padding:3px 10px;border-radius:20px;margin-left:10px;vertical-align:3px}
+
+.page-nav{
+  display:flex;flex-wrap:nowrap;overflow-x:auto;gap:10px;
+  padding:14px 0;margin-bottom:18px;border-bottom:1px solid var(--line);
+}
+.nav-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:0.82rem;font-weight:600;color:var(--teal-900);text-decoration:none;
+  background:var(--card);border:1px solid var(--line);border-radius:20px;
+  padding:8px 16px;transition:all .15s ease;
+}
+.nav-btn:hover{border-color:var(--coral-600);box-shadow:var(--shadow);}
+.nav-btn.active{background:var(--teal-600);color:#fff;border-color:var(--teal-600);}
+
+.tabs{display:flex;gap:8px;margin-bottom:22px;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:wrap}
+.nav-item{font-size:14px;font-weight:700;color:var(--ink-900);padding:12px 20px;cursor:pointer;border:1.5px solid var(--line);border-radius:12px;background:#fff;white-space:nowrap;font-family:inherit;transition:all .15s ease;box-shadow:var(--shadow);}
+.nav-item:hover{border-color:var(--teal-600);transform:translateY(-1px);background:#fff;color:var(--ink-900);}
+.nav-item.on{color:#fff;background:linear-gradient(135deg, var(--teal-900), var(--teal-600));border-color:var(--teal-900);box-shadow:0 4px 14px rgba(10,37,64,0.25);font-weight:700;}
+
+.fs{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:18px}
+.fc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 12px;box-shadow:var(--shadow)}
+.fl{font-size:10px;color:#888;margin-bottom:3px;text-transform:uppercase;letter-spacing:.04em}
+.fv{font-size:14px;font-weight:500}
+.fv.b{color:var(--teal-900)}.fv.g{color:#3B6D11}.fv.gd{color:#8a6a24}.fv.r{color:#A32D2D}
+.op{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:18px;display:flex;align-items:center;gap:18px;box-shadow:var(--shadow)}
+.op-l{flex:1}.op-t{font-size:13px;font-weight:500;margin-bottom:6px}
+.pb{height:6px;background:#F1EFE8;border-radius:3px;overflow:hidden}
+.pbi{height:6px;border-radius:3px;background:var(--coral-600);transition:width .4s}
+.op-n{font-size:26px;font-weight:500;color:var(--teal-900);min-width:52px;text-align:right}
+.pnl{display:none}.pnl.on{display:block}
+.phase{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow)}
+.phh{display:flex;align-items:center;gap:12px;padding:12px 16px;cursor:pointer;user-select:none}
+.phh:hover{background:#fafaf8}
+.dot{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0}
+.da{background:#E6F1FB;color:var(--teal-900)}.dd{background:#EAF3DE;color:#3B6D11}.df{background:#F1EFE8;color:#888}
+.phi{flex:1}
+.php{font-size:11px;color:#888;font-weight:500;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1px}
+.pht{font-size:14px;font-weight:600;color:var(--teal-900)}
+.phc{font-size:12px;color:#888;white-space:nowrap}
+.phb{padding:0 16px 12px;border-top:1px solid var(--line)}
+.ms{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.ms:last-child{border-bottom:none;padding-bottom:0}
+.ck{width:20px;height:20px;border-radius:4px;border:1px solid #c8c7c0;cursor:pointer;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;background:#fff;font-size:12px;font-weight:700;color:#3B6D11}
+.ck.on{background:#EAF3DE;border-color:#3B6D11}
+.msb{flex:1}
+.mst{font-size:13px;font-weight:600;color:var(--teal-900);margin-bottom:2px}
+.mss{font-size:12px;color:#52514e;line-height:1.55}
+.tag{display:inline-block;font-size:10px;padding:1px 6px;border-radius:20px;margin-left:5px;font-weight:500;vertical-align:1px}
+.tval{background:#EEEDFE;color:#3C3489}.tfin{background:#FDF5E8;color:#8a6a24}
+.tper{background:#E1F5EE;color:#085041}.tleg{background:#E6F1FB;color:var(--teal-900)}
+
+.callout{border-radius:14px;padding:14px 16px;margin:16px 0;font-size:13px;line-height:1.65}
+.callout.blue{background:#E6F1FB;border-left:3px solid var(--teal-900);color:var(--teal-900)}
+.callout.gold{background:#FDF5E8;border-left:3px solid var(--coral-600);color:#8a6a24}
+.callout.green{background:#EAF3DE;border-left:3px solid #3B6D11;color:#3B6D11}
+.callout.grey{background:#F7F9FC;border:1px solid var(--line);color:#52514e}
+
+.sec-hdr{margin-bottom:28px;padding-bottom:14px;border-bottom:2px solid var(--teal-900)}
+.sec-num{font-size:11px;font-weight:700;color:var(--coral-600);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.sec-title{font-size:24px;font-weight:600;color:var(--teal-900);margin-bottom:6px}
+.sec-sub{font-size:14px;color:#52514e;line-height:1.6}
+
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
+.sc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:var(--shadow)}
+.sc label{font-size:12px;color:#52514e;display:block;margin-bottom:6px}
+.sc input[type=range]{width:100%;accent-color:var(--teal-900);margin-bottom:4px}
+.sv{font-size:17px;font-weight:500;color:var(--teal-900)}
+.rg{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:12px}
+.rc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px;box-shadow:var(--shadow)}
+.rl{font-size:10px;color:#888;margin-bottom:3px;text-transform:uppercase;letter-spacing:.03em}
+.rv{font-size:16px;font-weight:500}
+.rv.g{color:#3B6D11}.rv.b{color:var(--teal-900)}.rv.gd{color:#8a6a24}.rv.r{color:#A32D2D}
+.note{font-size:12px;color:#52514e;line-height:1.65;margin-bottom:14px;background:#f7f9fc;border-radius:14px;padding:11px 13px}
+.vd-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-bottom:14px}
+.vd-item{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;box-shadow:var(--shadow)}
+.vd-item label{font-size:12px;font-weight:500;color:#0b0b0b;display:block;margin-bottom:1px}
+.vd-item .vdh{font-size:11px;color:#888;display:block;margin-bottom:6px;line-height:1.4}
+.vd-item input[type=range]{width:100%;accent-color:var(--teal-900);margin-bottom:2px}
+.vd-val{font-size:15px;font-weight:600;color:var(--teal-900);float:right}
+.score-band{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px;display:flex;align-items:center;gap:18px;box-shadow:var(--shadow)}
+.score-num{font-size:34px;font-weight:600;min-width:90px;text-align:center}
+.score-num.g{color:#3B6D11}.score-num.gd{color:#8a6a24}.score-num.r{color:#A32D2D}
+.score-bar-wrap{flex:1}
+.score-bar{height:10px;background:#F1EFE8;border-radius:5px;overflow:hidden;margin-bottom:6px}
+.score-bar-i{height:10px;border-radius:5px;transition:width .3s}
+.sum-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.sum-card{border-radius:14px;padding:16px;border:1px solid var(--line);box-shadow:var(--shadow)}
+.sum-card.worst{background:#FDF3F3;border-color:#F0C0C0}
+.sum-card.mid{background:#F0F4FD;border-color:#B5D4F4}
+.sum-card.best{background:#EAF3DE;border-color:#A8D5A2}
+.sum-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.sum-label.worst{color:#A32D2D}.sum-label.mid{color:var(--teal-900)}.sum-label.best{color:#3B6D11}
+.sum-title{font-size:13px;font-weight:500;margin-bottom:10px;color:#0b0b0b;line-height:1.4}
+.sum-val{font-size:22px;font-weight:500;margin-bottom:3px}
+.sum-val.worst{color:#A32D2D}.sum-val.mid{color:var(--teal-900)}.sum-val.best{color:#3B6D11}
+.sum-sub{font-size:11px;color:#888;line-height:1.4}
+.tw{overflow-x:auto;margin-bottom:10px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{font-size:11px;font-weight:500;color:#52514e;padding:8px 10px;text-align:right;border-bottom:1px solid #c8c7c0;background:#f7f9fc}
+th:first-child{text-align:left}
+td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line);color:#0b0b0b}
+td:first-child{text-align:left;color:#52514e;font-weight:500}
+tr:nth-child(even) td{background:#fafaf8}
+td.r{color:#A32D2D;font-weight:500}td.g{color:#3B6D11;font-weight:500}td.gd{color:#8a6a24;font-weight:500}
+td.b{color:var(--teal-900);font-weight:500}td.hl{background:#EAF3DE!important;font-weight:500}
+.tn{font-size:12px;color:#52514e;line-height:1.55;margin-bottom:14px;padding:10px 12px;background:#f7f9fc;border-radius:14px}
+.ag{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:14px}
+.ac{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:var(--shadow)}
+.ar{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.05em;color:#888;margin-bottom:4px}
+.an{font-size:14px;font-weight:600;color:var(--teal-900);margin-bottom:2px}
+.af{font-size:12px;color:#52514e;margin-bottom:8px;line-height:1.4}
+.as{font-size:11px;padding:3px 8px;border-radius:20px;display:inline-block;font-weight:500}
+.se{background:#EAF3DE;color:#3B6D11}.sn{background:#FDF5E8;color:#8a6a24}.st{background:#F1EFE8;color:#888}
+.br{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+button.uibtn{font-size:13px;padding:8px 14px;border:1px solid var(--line);border-radius:6px;background:#fff;cursor:pointer;font-family:inherit;color:var(--teal-900)}
+button.uibtn:hover{background:#F1EFE8}
+hr{border:none;border-top:1px solid var(--line);margin:16px 0}
+footer.pf{text-align:center;font-size:11px;color:#999;margin-top:22px;padding-top:14px;border-top:1px solid var(--line)}
+@media(max-width:600px){.sum-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="page-nav">
+  <a href="index.html" class="nav-btn">🏠 UHNW Resource Hub</a>
+  <a href="uhnw-navigator.html" class="nav-btn">🧭 UHNW Navigator</a>
+  <a href="uhnw-discovery-call.html" class="nav-btn">📞 Discovery Call</a>
+  <a href="uhnw-flowchart.html" class="nav-btn">🔁 Flowchart</a>
+  <a href="uhnw-wealth-transfer-toolkit.html" class="nav-btn">🧰 Wealth Transfer Toolkit</a>
+  <a href="uhnw-reference-library.html" class="nav-btn">📚 Reference Library</a>
+  <a href="uhnw-estate-road-map.html" class="nav-btn active">🗺️ Estate Planning Road Map</a>
+  <a href="uhnw-about-us.html" class="nav-btn">👥 About Us</a>
+</nav>
+
+<header class="hero">
+  <div class="brand-label">Allegiance Partners</div>
+  <h1>Estate Planning Road Map<span class="demo-flag">Illustrative Example</span></h1>
+  <p>A Phased Approach to Multi-Generational Wealth Transfer &nbsp;·&nbsp; 2026</p>
+</header>
+
+<div class="tabs">
+  <button class="nav-item on" id="nav-rm" onclick="st('rm',this)">Roadmap</button>
+  <button class="nav-item" id="nav-vd" onclick="st('vd',this)">Wealth Drivers</button>
+  <button class="nav-item" id="nav-va" onclick="st('va',this)">Gifting Estimator</button>
+  <button class="nav-item" id="nav-ad" onclick="st('ad',this)">Advisor Team</button>
+</div>
+
+<div class="callout gold">This road map is provided for informational and educational purposes only and does not constitute legal, tax, accounting, or investment advice. Allegiance Partners does not act as your attorney or CPA. Please consult your own advisors before executing any strategy described here.</div>
+
+<div class="fs">
+  <div class="fc"><div class="fl">Residence</div><div class="fv">New York, NY</div></div>
+  <div class="fc"><div class="fl">Family net worth</div><div class="fv b">$40M</div></div>
+  <div class="fc"><div class="fl">Planning horizon</div><div class="fv gd">20 years</div></div>
+  <div class="fc"><div class="fl">Preferred structure</div><div class="fv">Dynasty Trust + DAF</div></div>
+  <div class="fc"><div class="fl">Lifetime exemption (2026)</div><div class="fv">$15,000,000</div></div>
+  <div class="fc"><div class="fl">Existing trust funding</div><div class="fv g">25%</div></div>
+  <div class="fc"><div class="fl">NY estate tax exposure</div><div class="fv r">Yes</div></div>
+  <div class="fc"><div class="fl">Wealth Continuity Score</div><div class="fv gd" id="fs-score">50 / 100</div></div>
+</div>
+
+<div class="op">
+  <div class="op-l">
+    <div class="op-t">Overall roadmap progress</div>
+    <div class="pb"><div class="pbi" id="opb" style="width:0%"></div></div>
+  </div>
+  <div class="op-n"><span id="opct">0</span>%</div>
+</div>
+
+<!-- ROADMAP -->
+<div class="pnl on" id="pnl-rm">
+  <div class="sec-hdr">
+    <div class="sec-num">Roadmap</div>
+    <div class="sec-title">Phase-by-Phase Plan</div>
+    <div class="sec-sub">Discover, Prepare, and Implement — the milestones that take a family from today's balance sheet to a fully funded, multi-generational plan.</div>
+  </div>
+  <div class="callout blue"><strong>This is a live, interactive tool</strong> — every family's road map is built around its own net worth, existing structures, and goals. Click into any step below to see the level of detail a real workspace would include.</div>
+  <div class="callout grey">Most families under-invest in the Prepare phase — it is usually where the largest, most durable gains in after-tax wealth transfer are found, well before any gifting or funding takes place.</div>
+  <div id="phases"></div>
+  <div class="br">
+    <button class="uibtn" onclick="expandAll()">Expand all phases</button>
+    <button class="uibtn" onclick="collapseAll()">Collapse all</button>
+  </div>
+</div>
+
+<!-- WEALTH DRIVERS -->
+<div class="pnl" id="pnl-vd">
+  <div class="sec-hdr">
+    <div class="sec-num">Wealth Drivers</div>
+    <div class="sec-title">The 8 Drivers of Wealth Continuity</div>
+    <div class="sec-sub">What actually determines how efficiently a family's wealth reaches the next generation, independent of the raw net worth number.</div>
+  </div>
+  <div class="callout blue">These <strong>8 Drivers of Wealth Continuity</strong> are the factors that determine how efficiently a family's wealth actually reaches the next generation — independent of how large the balance sheet is. Score each driver 1 (weak) to 10 (strong) to see how it moves the overall Wealth Continuity Score and, on the Gifting Estimator tab, the pace of wealth transfer the family's current readiness can support.</div>
+  <div class="score-band">
+    <div class="score-num gd" id="vd-score-num">50</div>
+    <div class="score-bar-wrap">
+      <div class="score-bar"><div class="score-bar-i" id="vd-score-bar" style="width: 50%; background: rgb(133, 79, 11);"></div></div>
+      <div style="font-size:12px;color:#52514e">Wealth Continuity Score — average of the 8 drivers below, ×10</div>
+    </div>
+  </div>
+  <div class="vd-grid">
+    <div class="vd-item"><label>Liquidity<span class="vd-val" id="vd_financial_v">6</span></label><span class="vdh">Cash and marketable securities available without a forced sale</span><input type="range" id="vd_financial" min="1" max="10" step="1" value="6" oninput="vdUpdate()"></div>
+    <div class="vd-item"><label>Structural Clarity<span class="vd-val" id="vd_growth_v">5</span></label><span class="vdh">Assets held in clearly documented entities/trusts vs. scattered personally</span><input type="range" id="vd_growth" min="1" max="10" step="1" value="5" oninput="vdUpdate()"></div>
+    <div class="vd-item"><label>Documentation Currency<span class="vd-val" id="vd_switzerland_v">5</span></label><span class="vdh">Estate planning documents updated within the last 3–5 years</span><input type="range" id="vd_switzerland" min="1" max="10" step="1" value="5" oninput="vdUpdate()"></div>
+    <div class="vd-item"><label>Beneficiary Alignment<span class="vd-val" id="vd_teeter_v">6</span></label><span class="vdh">Beneficiary designations and family communication consistent with the plan</span><input type="range" id="vd_teeter" min="1" max="10" step="1" value="6" oninput="vdUpdate()"></div>
+    <div class="vd-item"><label>Governance<span class="vd-val" id="vd_recurring_v">4</span></label><span class="vdh">Family decision-making framework or mission statement in place</span><input type="range" id="vd_recurring" min="1" max="10" step="1" value="4" oninput="vdUpdate()"></div>
+    <div class="vd-item"><label>Tax Efficiency<span class="vd-val" id="vd_monopoly_v">5</span></label><span class="vdh">Income and estate tax exposure actively managed vs. unaddressed</span><input type="range" id="vd_monopoly" min="1" max="10" step="1" value="5" oninput="vdUpdate()"></div>
+    <div class="vd-item"><label>Advisor Coordination<span class="vd-val" id="vd_customer_v">6</span></label><span class="vdh">CPA, counsel, and wealth strategist working from the same plan</span><input type="range" id="vd_customer" min="1" max="10" step="1" value="6" oninput="vdUpdate()"></div>
+    <div class="vd-item"><label>Succession Readiness<span class="vd-val" id="vd_hub_v">3</span></label><span class="vdh">Trustee and fiduciary succession clearly identified</span><input type="range" id="vd_hub" min="1" max="10" step="1" value="3" oninput="vdUpdate()"></div>
+  </div>
+  <div class="note" id="vd-note">Weakest drivers today: <strong>Succession Readiness, Governance</strong>. These are usually the cheapest, fastest wins in the Prepare phase — closing even one weak driver to a 7-8 can meaningfully increase the pace of wealth transfer a family can sustain. See the Gifting Estimator tab for the dollar impact.</div>
+</div>
+
+<!-- GIFTING ESTIMATOR -->
+<div class="pnl" id="pnl-va">
+  <div class="sec-hdr">
+    <div class="sec-num">Gifting Estimator</div>
+    <div class="sec-title">How Much Could Move Out of the Taxable Estate</div>
+    <div class="sec-sub">A range, not a point — driven by net worth, gifting pace, and the family's Wealth Continuity Score.</div>
+  </div>
+  <div class="callout blue">This estimates how much of the family's net worth could move outside the taxable estate over the chosen horizon, combining a one-time allocation of the $15,000,000 (2026) lifetime exemption with a sustained annual gifting program. Where the family lands within the Conservative-to-Aggressive range depends on the Wealth Continuity Score set on the Wealth Drivers tab — better-prepared families can sustain a faster pace.</div>
+  <div class="sg">
+    <div class="sc"><label>Family net worth ($M)</label><input type="range" id="va_rev" min="5" max="500" step="5" value="40" oninput="document.getElementById('va_revv').textContent='$'+this.value+'M';vaCalc()"><div class="sv" id="va_revv">$40M</div></div>
+    <div class="sc"><label>Years to project</label><input type="range" id="va_ebitda" min="5" max="40" step="1" value="20" oninput="document.getElementById('va_ebitdav').textContent=this.value+' yrs';vaCalc()"><div class="sv" id="va_ebitdav">20 yrs</div></div>
+    <div class="sc"><label>Annual gifting pace — Conservative ($K/yr)</label><input type="range" id="va_mlow" min="0" max="200" step="10" value="50" oninput="document.getElementById('va_mlowv').textContent='$'+this.value+'K';vaCalc()"><div class="sv" id="va_mlowv">$50K</div></div>
+    <div class="sc"><label>Annual gifting pace — Aggressive ($K/yr)</label><input type="range" id="va_mhigh" min="0" max="1000" step="10" value="250" oninput="document.getElementById('va_mhighv').textContent='$'+this.value+'K';vaCalc()"><div class="sv" id="va_mhighv">$250K</div></div>
+    <div class="sc"><label>Lifetime exemption already allocated (%)</label><input type="range" id="va_costs" min="0" max="100" step="5" value="0" oninput="document.getElementById('va_costsv').textContent=this.value+'%';vaCalc()"><div class="sv" id="va_costsv">0%</div></div>
+    <div class="sc"><label>Illustrative combined transfer tax rate (%)</label><input type="range" id="va_debt" min="20" max="56" step="1" value="40" oninput="document.getElementById('va_debtv').textContent=this.value+'%';vaCalc()"><div class="sv" id="va_debtv">40%</div></div>
+  </div>
+
+  <div class="sum-grid">
+    <div class="sum-card worst"><div class="sum-label worst">Conservative</div><div class="sum-title">Exemption + conservative annual pace</div><div class="sum-val worst" id="va-low">—</div><div class="sum-sub">No adjustment for readiness — the floor of the range</div></div>
+    <div class="sum-card mid"><div class="sum-label mid">Score-adjusted</div><div class="sum-title">Where this family sits today</div><div class="sum-val mid" id="va-score">—</div><div class="sum-sub">Interpolated from the Wealth Continuity Score set on the Wealth Drivers tab</div></div>
+    <div class="sum-card best"><div class="sum-label best">Aggressive</div><div class="sum-title">Exemption + aggressive annual pace</div><div class="sum-val best" id="va-high">—</div><div class="sum-sub">What a Wealth Continuity Score of 100 could support</div></div>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th></th><th>Annual pace</th><th>Moved out over horizon</th><th>Transfer tax avoided</th><th>Still taxable at horizon end</th></tr></thead>
+      <tbody id="va-tbl"></tbody>
+    </table>
+  </div>
+  <div class="tn" id="va-note"></div>
+</div>
+
+<!-- ADVISORS -->
+<div class="pnl" id="pnl-ad">
+  <div class="sec-hdr">
+    <div class="sec-num">Advisor Team</div>
+    <div class="sec-title">Who's on the Planning Team</div>
+    <div class="sec-sub">The specialists a well-run multi-generational plan needs, and when each one gets engaged.</div>
+  </div>
+  <div class="callout grey">A well-run estate and tax plan works best with a co-ordinated team, engaged well before any trust is funded. John will help identify and introduce the right specialists at each stage — you don't need everyone in place at once, the team builds naturally as the Prepare phase progresses.</div>
+  <div class="ag">
+    <div class="ac"><div class="ar">Wealth strategist</div><div class="an">John Alexander</div><div class="af">Allegiance Partners</div><div class="as se">✓ Engaged</div></div>
+    <div class="ac"><div class="ar">Family office &amp; multi-generational planning</div><div class="an">Harold Hyunho Lee</div><div class="af">Allegiance Partners — former Head of Family Office &amp; CIO</div><div class="as sn">In discussion</div></div>
+    <div class="ac"><div class="ar">Trusts &amp; estates counsel</div><div class="an">To be identified</div><div class="af">Drafts and structures the Dynasty Trust and related documents</div><div class="as st">Engaged in Prepare phase</div></div>
+    <div class="ac"><div class="ar">CPA / tax advisor</div><div class="an">To be identified</div><div class="af">Models the gift/GST exemption allocation and annual gifting program</div><div class="as st">Engaged in Prepare phase</div></div>
+    <div class="ac"><div class="ar">Institutional trustee</div><div class="an">To be identified</div><div class="af">Delaware or South Dakota situs, selected with counsel</div><div class="as st">Engaged in Implement phase</div></div>
+    <div class="ac"><div class="ar">Wealth transfer modeling</div><div class="an">Wealth Transfer Toolkit</div><div class="af">Once the road map is underway, detailed scenario modeling continues in the companion Wealth Transfer Toolkit</div><div class="as st">Ongoing</div></div>
+  </div>
+</div>
+
+<footer class="pf">Illustrative example — not specific to any individual family. © Allegiance Partners 2026.</footer>
+
+</div><!-- end wrap -->
+
+<script>
+const PH=[
+  {per:"Year 1 · Q1–Q2",ttl:"Discover",st:"a",ms:[
+    {t:"Baseline net worth &amp; balance sheet audit",s:"Run the 8 Drivers scorecard and a preliminary view of what's held personally, in trust, and in entities — establishing where the family stands today before any structuring begins.",tg:["val"]},
+    {t:"Engage wealth strategist",s:"John leads the Discover phase — translating the Wealth Continuity scorecard into a prioritized, dollar-quantified action plan rather than a generic checklist.",tg:["per"]},
+    {t:"Review existing documents &amp; structures",s:"An informal pass on existing wills, trusts, and entities to flag what's current, what's stale, and what's missing entirely.",tg:["fin"]},
+    {t:"Confirm the family's planning goals",s:"What does the family actually want the plan to achieve — control, flexibility, philanthropy, a specific horizon? This anchors the whole plan, not an afterthought once documents are drafted.",tg:["per"]},
+  ]},
+  {per:"Year 1 · Q3 – Year 2 · Q1",ttl:"Prepare — Structural Readiness",st:"f",ms:[
+    {t:"Establish or confirm trust situs and structure",s:"Delaware or another favorable jurisdiction, selected with T&amp;E counsel based on the family's specific goals.",tg:["val"]},
+    {t:"Consolidate scattered accounts and entities",s:"Move recordkeeping and titling into a clear, documented structure a successor trustee or advisor could actually step into.",tg:["val"]},
+    {t:"Valuation of illiquid or closely-held interests",s:"Engage a qualified appraiser for any business interests, real estate, or other hard-to-value assets that gifting or trust funding will depend on.",tg:["fin"]},
+    {t:"Coordinate beneficiary designations",s:"Review beneficiary designations across all retirement accounts, insurance policies, and financial accounts for consistency with the plan.",tg:["val"]},
+  ]},
+  {per:"Year 1 · Q3 – Year 2 · Q1",ttl:"Prepare — Personal &amp; Governance Readiness",st:"f",ms:[
+    {t:"Family governance framework",s:"A written family mission statement and decision-making framework — especially valuable once multiple generations are named as beneficiaries.",tg:["per"]},
+    {t:"Successor trustee &amp; fiduciary decisions",s:"Confirm the succession plan for trusteeship — an institutional trustee, a family member, or a combination — with T&amp;E counsel.",tg:["leg"]},
+    {t:"Confirm philanthropic intent &amp; vehicle",s:"Decide whether a Donor Advised Fund, charitable trust, or private foundation best fits the family's charitable goals.",tg:["fin"]},
+    {t:"Basic estate plan documents current",s:"Will, Power of Attorney, and Healthcare Proxy reviewed and updated — often stale by the time serious wealth transfer planning begins.",tg:["leg"]},
+  ]},
+  {per:"Year 2",ttl:"Decide — Implement",st:"f",ms:[
+    {t:"Fund Dynasty Trust with target assets",s:"Complete the transfer of the assets identified in the planning process into the trust at today's values.",tg:["leg"]},
+    {t:"Allocate lifetime gift/GST exemption",s:"File Form 709 to allocate lifetime exemption and GST exemption against the funding gift, locking in today's values for all future growth.",tg:["fin"]},
+    {t:"Establish charitable vehicle",s:"Set up and fund the DAF, CRUT, or foundation identified in the Prepare phase.",tg:["fin"]},
+    {t:"Begin annual exclusion gifting program",s:"Start a disciplined, recurring annual gifting program across all intended beneficiaries.",tg:["val"]},
+  ]},
+  {per:"Year 2 — Ongoing",ttl:"Stewardship &amp; Review",st:"f",ms:[
+    {t:"Confirm full advisor alignment",s:"T&amp;E counsel, CPA, and John all working from the same plan before anything is signed.",tg:["leg"]},
+    {t:"Annual review cadence",s:"Revisit the plan each year — exemption amounts, family circumstances, and tax law all change over a multi-decade horizon.",tg:["leg"]},
+    {t:"Monitor exemption &amp; law changes",s:"Federal and state exemption amounts, rates, and rules can and do change — an annual check-in keeps the plan current.",tg:["fin"]},
+    {t:"Handoff to Wealth Transfer Toolkit",s:"Once the road map is underway, detailed scenario modeling — Estate Freeze projections, gift/GST exemption tracking — continues in the companion Wealth Transfer Toolkit built around the family's actual numbers.",tg:["per"]},
+  ]},
+];
+
+const TGC={val:"tval",fin:"tfin",per:"tper",leg:"tleg"};
+const TGL={val:"Wealth Driver",fin:"Financial",per:"Personal",leg:"Legal/Deal"};
+let CK={};
+
+function bld(){
+  const el=document.getElementById('phases');el.innerHTML='';
+  let tot=0,dn=0;
+  PH.forEach((ph,pi)=>{
+    const d=ph.ms.filter((_,mi)=>CK[pi+'-'+mi]).length,n=ph.ms.length;
+    tot+=n;dn+=d;
+    const sc=d===n?'dd':(d>0||ph.st==='a'?'da':'df');
+    const ic=d===n?'&#10003;':(pi+1);
+    const bod=ph.ms.map((m,mi)=>{
+      const k=pi+'-'+mi,c=CK[k]?'on':'';
+      const tgs=(m.tg||[]).map(t=>TGC[t]?`<span class="tag ${TGC[t]}">${TGL[t]}</span>`:'').join('');
+      return `<div class="ms"><div class="ck ${c}" onclick="tg('${k}',this)">${c?'&#10003;':''}</div><div class="msb"><div class="mst">${m.t}${tgs}</div><div class="mss">${m.s}</div></div></div>`;
+    }).join('');
+    el.innerHTML+=`<div class="phase"><div class="phh" onclick="tp(this)"><div class="dot ${sc}">${ic}</div><div class="phi"><div class="php">${ph.per}</div><div class="pht">${ph.ttl}</div></div><div class="phc">${d}/${n} complete</div></div><div class="phb" style="${pi===0?'':'display:none'}">${bod}</div></div>`;
+  });
+  const pct=Math.round(dn/tot*100);
+  document.getElementById('opct').textContent=pct;
+  document.getElementById('opb').style.width=pct+'%';
+}
+function tp(h){const b=h.nextElementSibling;b.style.display=b.style.display==='none'?'block':'none';}
+function tg(k,el){CK[k]=!CK[k];el.classList.toggle('on');el.innerHTML=CK[k]?'&#10003;':'';bld();}
+function st(id,el){document.querySelectorAll('.nav-item').forEach(t=>t.classList.remove('on'));document.querySelectorAll('.pnl').forEach(p=>p.classList.remove('on'));(el||document.getElementById('nav-'+id)).classList.add('on');document.getElementById('pnl-'+id).classList.add('on');window.scrollTo({top:0,behavior:'smooth'});}
+function expandAll(){document.querySelectorAll('.phb').forEach(b=>b.style.display='block');}
+function collapseAll(){document.querySelectorAll('.phb').forEach((b,i)=>{b.style.display=i===0?'block':'none';});}
+
+function fm(n){
+  const a=Math.abs(n),s=n<0?'-':'';
+  if(a>=1e9)return s+'$'+(a/1e9).toFixed(2)+'B';
+  if(a>=1e6)return s+'$'+(a/1e6).toFixed(2)+'M';
+  if(a>=1e3)return s+'$'+(a/1e3).toFixed(0)+'K';
+  return s+'$'+Math.round(a).toLocaleString();
+}
+
+// ── 8 Drivers of Wealth Continuity — shared score, read by both the Wealth
+// Drivers tab and the Gifting Estimator tab (interpolates the gifting pace).
+const VD_IDS=['vd_financial','vd_growth','vd_switzerland','vd_teeter','vd_recurring','vd_monopoly','vd_customer','vd_hub'];
+let VBS = 55;
+function vdUpdate(){
+  let sum=0;
+  VD_IDS.forEach(id=>{
+    const v=+document.getElementById(id).value;
+    document.getElementById(id+'_v').textContent=v;
+    sum+=v;
+  });
+  VBS=Math.round(sum/VD_IDS.length*10);
+  const band = VBS>=70?'g':VBS>=45?'gd':'r';
+  const color = VBS>=70?'#3B6D11':VBS>=45?'#8a6a24':'#A32D2D';
+  document.getElementById('vd-score-num').textContent=VBS;
+  document.getElementById('vd-score-num').className='score-num '+band;
+  document.getElementById('vd-score-bar').style.width=VBS+'%';
+  document.getElementById('vd-score-bar').style.background=color;
+  document.getElementById('fs-score').textContent=VBS+' / 100';
+  document.getElementById('fs-score').className='fv '+band;
+  const low = VD_IDS.filter(id=>+document.getElementById(id).value<=4)
+    .map(id=>({vd_financial:'Liquidity',vd_growth:'Structural Clarity',vd_switzerland:'Documentation Currency',vd_teeter:'Beneficiary Alignment',vd_recurring:'Governance',vd_monopoly:'Tax Efficiency',vd_customer:'Advisor Coordination',vd_hub:'Succession Readiness'}[id]));
+  document.getElementById('vd-note').innerHTML = low.length
+    ? `Weakest drivers today: <strong>${low.join(', ')}</strong>. These are usually the cheapest, fastest wins in the Prepare phase — closing even one weak driver to a 7-8 can meaningfully increase the pace of wealth transfer a family can sustain. See the Gifting Estimator tab for the dollar impact.`
+    : `All eight drivers are scoring 5 or above — at this level, the conversation shifts from "fixing weaknesses" to "accelerating the plan" already in motion.`;
+  vaCalc();
+}
+
+function vaCalc(){
+  const nw=+document.getElementById('va_rev').value*1e6;
+  const yrs=+document.getElementById('va_ebitda').value;
+  const glow=+document.getElementById('va_mlow').value*1000;
+  const ghigh=+document.getElementById('va_mhigh').value*1000;
+  const exemptPct=+document.getElementById('va_costs').value/100;
+  const taxRate=+document.getElementById('va_debt').value/100;
+
+  const exemption=15000000*exemptPct;
+  const scorePace = glow + (VBS/100)*(ghigh-glow);
+
+  const movedLow=exemption+glow*yrs, movedScore=exemption+scorePace*yrs, movedHigh=exemption+ghigh*yrs;
+  const remain = moved => Math.max(0, nw-moved);
+  const avoided = moved => moved*taxRate;
+
+  document.getElementById('va-low').textContent=fm(movedLow);
+  document.getElementById('va-score').textContent=fm(movedScore);
+  document.getElementById('va-high').textContent=fm(movedHigh);
+
+  const rows=[
+    {lbl:'Conservative',pace:glow,moved:movedLow,cls:'r'},
+    {lbl:`Score-adjusted (${fm(scorePace)}/yr)`,pace:scorePace,moved:movedScore,cls:'b'},
+    {lbl:'Aggressive',pace:ghigh,moved:movedHigh,cls:'g'},
+  ];
+  document.getElementById('va-tbl').innerHTML=rows.map(r=>{
+    return `<tr><td>${r.lbl}</td><td>${fm(r.pace)}/yr</td><td class="${r.cls}">${fm(r.moved)}</td><td>${fm(avoided(r.moved))}</td><td class="hl">${fm(remain(r.moved))}</td></tr>`;
+  }).join('');
+
+  const gapToHigh = movedHigh - movedScore;
+  document.getElementById('va-note').innerHTML = `At today's Wealth Continuity Score of <strong>${VBS}/100</strong>, this family could move an estimated <strong>${fm(movedScore)}</strong> outside the taxable estate over ${yrs} years — avoiding roughly <strong>${fm(avoided(movedScore))}</strong> in illustrative transfer tax, and leaving <strong>${fm(remain(movedScore))}</strong> still exposed at the end of the horizon. Closing the gap to a Wealth Continuity Score of 100 is worth roughly <strong>${fm(gapToHigh)}</strong> in additional wealth moved out — that gap, not the net worth number alone, is what the Prepare phase of the road map is built to close. See the Wealth Transfer Toolkit for a precise, NY-specific estate tax projection.`;
+}
+
+bld(); vdUpdate();
+</script>
+</body>
+</html>

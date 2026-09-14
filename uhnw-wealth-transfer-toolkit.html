@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wealth Transfer Toolkit — Illustrative Example · Allegiance Partners</title>
+<style>
+:root{
+  --teal-900:#0a2540;
+  --teal-700:#123a63;
+  --teal-600:#1b4f82;
+  --teal-500:#3572ad;
+  --teal-100:#e8eef6;
+  --coral-600:#b8860b;
+  --coral-100:#faf1dc;
+  --ink-900:#161b22;
+  --ink-600:#4b5563;
+  --ink-400:#818a95;
+  --paper:#f8f7f2;
+  --card:#ffffff;
+  --line:#e1e0d8;
+  --shadow: 0 2px 10px rgba(10,37,64,0.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;background:var(--paper);color:var(--ink-900);font-size:14px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 24px 64px;}
+
+header.hero{
+  background:linear-gradient(135deg, var(--teal-900), var(--teal-600));
+  color:#fff;border-radius:16px;padding:32px 36px;margin-bottom:28px;position:relative;overflow:hidden;
+}
+header.hero::after{
+  content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;
+  border-radius:50%;background:rgba(255,255,255,0.07);
+}
+header.hero .brand-label{color:var(--coral-600);font-size:0.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;}
+header.hero h1{margin:0 0 8px;font-size:1.7rem;font-weight:700;letter-spacing:-0.01em;}
+header.hero p{margin:0;max-width:640px;color:rgba(255,255,255,0.88);line-height:1.55;font-size:0.97rem;}
+.demo-flag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:var(--coral-600);color:#fff;padding:3px 10px;border-radius:20px;margin-left:10px;vertical-align:3px}
+
+.page-nav{
+  display:flex;flex-wrap:nowrap;overflow-x:auto;gap:10px;
+  padding:14px 0;margin-bottom:18px;border-bottom:1px solid var(--line);
+}
+.nav-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:0.82rem;font-weight:600;color:var(--teal-900);text-decoration:none;
+  background:var(--card);border:1px solid var(--line);border-radius:20px;
+  padding:8px 16px;transition:all .15s ease;
+}
+.nav-btn:hover{border-color:var(--coral-600);box-shadow:var(--shadow);}
+.nav-btn.active{background:var(--teal-600);color:#fff;border-color:var(--teal-600);}
+
+.disc{background:#FDF5E8;border:1px solid #F0DFC0;border-left:3px solid #8a6a24;border-radius:0 14px 14px 0;padding:10px 14px;font-size:12px;color:#63460b;margin-bottom:18px;line-height:1.6}
+.fs{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:18px}
+.fc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 12px;box-shadow:var(--shadow)}
+.fl{font-size:10px;color:#888;margin-bottom:3px;text-transform:uppercase;letter-spacing:.04em}
+.fv{font-size:14px;font-weight:500}
+.fv.b{color:var(--teal-600)}.fv.g{color:#3B6D11}.fv.gd{color:#8a6a24}.fv.r{color:#A32D2D}
+.op{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:18px;display:flex;align-items:center;gap:18px;box-shadow:var(--shadow)}
+.op-l{flex:1}.op-t{font-size:13px;font-weight:500;margin-bottom:6px}
+.pb{height:6px;background:#F1EFE8;border-radius:3px;overflow:hidden}
+.pbi{height:6px;border-radius:3px;background:var(--teal-600);transition:width .4s}
+.op-n{font-size:26px;font-weight:500;color:var(--teal-600);min-width:52px;text-align:right}
+.tabs{display:flex;gap:8px;margin-bottom:22px;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:wrap}
+.tab{font-size:14px;font-weight:700;color:var(--ink-900);padding:12px 20px;cursor:pointer;border:1.5px solid var(--line);border-radius:12px;background:#fff;white-space:nowrap;font-family:inherit;transition:all .15s ease;box-shadow:var(--shadow);}
+.tab:hover{border-color:var(--teal-600);transform:translateY(-1px);}
+.tab.on{color:#fff;background:linear-gradient(135deg, var(--teal-900), var(--teal-600));border-color:var(--teal-900);box-shadow:0 4px 14px rgba(10,37,64,0.25);}
+.pnl{display:none}.pnl.on{display:block}
+.phase{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow)}
+.phh{display:flex;align-items:center;gap:12px;padding:12px 16px;cursor:pointer;user-select:none}
+.phh:hover{background:#fafaf8}
+.dot{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0}
+.da{background:#E6F1FB;color:var(--teal-600)}.dd{background:#EAF3DE;color:#3B6D11}.df{background:#F1EFE8;color:#888}
+.phi{flex:1}
+.php{font-size:11px;color:#888;font-weight:500;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1px}
+.pht{font-size:14px;font-weight:500}
+.phc{font-size:12px;color:#888;white-space:nowrap}
+.phb{padding:0 16px 12px;border-top:1px solid var(--line)}
+.ms{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.ms:last-child{border-bottom:none;padding-bottom:0}
+.ck{width:20px;height:20px;border-radius:4px;border:1px solid #c8c7c0;cursor:pointer;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;background:#fff;font-size:12px;font-weight:700;color:#3B6D11}
+.ck.on{background:#EAF3DE;border-color:#3B6D11}
+.msb{flex:1}
+.mst{font-size:13px;font-weight:500;margin-bottom:2px}
+.mss{font-size:12px;color:#52514e;line-height:1.55}
+.tag{display:inline-block;font-size:10px;padding:1px 6px;border-radius:20px;margin-left:5px;font-weight:500;vertical-align:1px}
+.ttr{background:#EEEDFE;color:#3C3489}.ttx{background:#FAEEDA;color:#8a6a24}
+.tlg{background:#E1F5EE;color:#085041}.tpp{background:#E6F1FB;color:var(--teal-900)}
+.calm{background:#F7F9FC;border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:13px;color:#52514e;margin-bottom:14px;line-height:1.6}
+.info{background:#E6F1FB;border-left:3px solid var(--teal-600);border-radius:0 14px 14px 0;padding:10px 14px;font-size:13px;color:var(--teal-900);margin-bottom:14px;line-height:1.6}
+.success{background:#EAF3DE;border-left:3px solid #3B6D11;border-radius:0 14px 14px 0;padding:10px 14px;font-size:13px;color:#1B4D1B;margin-bottom:14px;line-height:1.6}
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:10px;margin-bottom:14px}
+.sc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:var(--shadow)}
+.sc label{font-size:12px;color:#52514e;display:block;margin-bottom:6px}
+.sc input[type=range]{width:100%;accent-color:var(--teal-600);margin-bottom:4px}
+.sv{font-size:17px;font-weight:500}
+.rg{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:12px}
+.rc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px;box-shadow:var(--shadow)}
+.rl{font-size:10px;color:#888;margin-bottom:3px;text-transform:uppercase;letter-spacing:.03em}
+.rv{font-size:16px;font-weight:500}
+.rv.g{color:#3B6D11}.rv.b{color:var(--teal-600)}.rv.gd{color:#8a6a24}.rv.r{color:#A32D2D}
+.note{font-size:12px;color:#52514e;line-height:1.65;margin-bottom:14px;background:#f7f9fc;border-radius:14px;padding:11px 13px}
+.qg{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;margin-bottom:14px}
+.qc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px;box-shadow:var(--shadow)}
+.ql{font-size:10px;color:#888;margin-bottom:3px;text-transform:uppercase;letter-spacing:.03em}
+.qv{font-size:16px;font-weight:500;color:#3B6D11}
+.pig{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:10px;margin-bottom:14px}
+.pi{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:var(--shadow)}
+.pi label{font-size:12px;color:#52514e;display:block;margin-bottom:6px}
+.pir{display:block}
+.pir input[type=range]{width:100%;accent-color:var(--teal-600);margin-bottom:4px}
+.pi input[type=number]{width:100%;font-size:14px;border:1px solid var(--line);border-radius:6px;padding:6px 8px;font-family:inherit}
+.pv{font-size:15px;font-weight:500;color:var(--teal-600);display:block;margin-top:2px}
+.sum-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.sum-card{border-radius:14px;padding:16px;border:1px solid var(--line);box-shadow:var(--shadow)}
+.sum-card.worst{background:#FDF3F3;border-color:#F0C0C0}
+.sum-card.mid{background:#F0F4FD;border-color:#B5D4F4}
+.sum-card.best{background:#EAF3DE;border-color:#A8D5A2}
+.sum-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.sum-label.worst{color:#A32D2D}.sum-label.mid{color:var(--teal-600)}.sum-label.best{color:#3B6D11}
+.sum-title{font-size:13px;font-weight:500;margin-bottom:10px;color:#0b0b0b;line-height:1.4}
+.sum-val{font-size:22px;font-weight:500;margin-bottom:3px}
+.sum-val.worst{color:#A32D2D}.sum-val.mid{color:var(--teal-600)}.sum-val.best{color:#3B6D11}
+.sum-sub{font-size:11px;color:#888;line-height:1.4}
+.tw{overflow-x:auto;margin-bottom:10px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{font-size:11px;font-weight:500;color:#52514e;padding:8px 10px;text-align:right;border-bottom:1px solid #c8c7c0;background:#f7f9fc}
+th:first-child{text-align:left}
+td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line);color:#0b0b0b}
+td:first-child{text-align:left;color:#52514e;font-weight:500}
+tr:nth-child(even) td{background:#fafaf8}
+td.r{color:#c0392b;font-weight:500}td.g{color:#1a7a4a;font-weight:500}td.gd{color:#8a6a24;font-weight:500}
+td.b{color:var(--teal-600);font-weight:500}td.hl{background:#EAF3DE!important;font-weight:500}
+.tn{font-size:12px;color:#52514e;line-height:1.55;margin-bottom:14px;padding:10px 12px;background:#f7f9fc;border-radius:14px}
+.ag{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:14px}
+.ac{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:var(--shadow)}
+.ar{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.05em;color:#888;margin-bottom:4px}
+.an{font-size:14px;font-weight:500;margin-bottom:2px}
+.af{font-size:12px;color:#52514e;margin-bottom:8px;line-height:1.4}
+.as{font-size:11px;padding:3px 8px;border-radius:20px;display:inline-block;font-weight:500}
+.se{background:#EAF3DE;color:#3B6D11}.sn{background:#FAEEDA;color:#8a6a24}.st{background:#F1EFE8;color:#888}
+.br{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+button{font-size:13px;padding:8px 14px;border:1px solid var(--line);border-radius:6px;background:#fff;cursor:pointer;font-family:inherit;color:#0b0b0b}
+button:hover{background:#F1EFE8}
+hr{border:none;border-top:1px solid var(--line);margin:16px 0}
+footer.pf{text-align:center;font-size:11px;color:#999;margin-top:22px;padding-top:14px;border-top:1px solid var(--line)}
+@media(max-width:600px){.sum-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="page-nav">
+  <a href="index.html" class="nav-btn">🏠 UHNW Resource Hub</a>
+  <a href="uhnw-navigator.html" class="nav-btn">🧭 UHNW Navigator</a>
+  <a href="uhnw-discovery-call.html" class="nav-btn">📞 Discovery Call</a>
+  <a href="uhnw-flowchart.html" class="nav-btn">🔁 Flowchart</a>
+  <a href="uhnw-wealth-transfer-toolkit.html" class="nav-btn active">🧰 Wealth Transfer Toolkit</a>
+  <a href="uhnw-reference-library.html" class="nav-btn">📚 Reference Library</a>
+  <a href="uhnw-estate-road-map.html" class="nav-btn">🗺️ Estate Planning Road Map</a>
+  <a href="uhnw-about-us.html" class="nav-btn">👥 About Us</a>
+</nav>
+
+<header class="hero">
+  <div class="brand-label">Allegiance Partners</div>
+  <h1>Wealth Transfer Toolkit<span class="demo-flag">Illustrative example</span></h1>
+  <p>A preview of the personalised planning workspace &nbsp;·&nbsp; Estate &amp; Tax Planning Edition &nbsp;·&nbsp; 2026</p>
+</header>
+
+<div class="disc">This toolkit is provided for informational and educational purposes only and does not constitute legal, tax, or investment advice. Allegiance Partners does not act as your attorney or CPA. Please consult your own CPA and/or attorney before executing any strategy described here.</div>
+
+<div class="fs">
+  <div class="fc"><div class="fl">Residence</div><div class="fv b">New York, NY</div></div>
+  <div class="fc"><div class="fl">Family net worth</div><div class="fv b">$40M</div></div>
+  <div class="fc"><div class="fl">Planning horizon</div><div class="fv gd">30+ years</div></div>
+  <div class="fc"><div class="fl">Irrevocable Trust funded</div><div class="fv g">$10M — 25%</div></div>
+  <div class="fc"><div class="fl">Trust situs</div><div class="fv">Delaware</div></div>
+  <div class="fc"><div class="fl">Lifetime exemption used</div><div class="fv gd">$10M of $15M</div></div>
+  <div class="fc"><div class="fl">GST exemption allocated</div><div class="fv g">Yes — Form 709</div></div>
+  <div class="fc"><div class="fl">NY estate tax exposure</div><div class="fv r">Yes (2026)</div></div>
+  <div class="fc"><div class="fl">Blended income/cap gains tax</div><div class="fv r">32.0%</div></div>
+</div>
+
+<div class="op">
+  <div class="op-l">
+    <div class="op-t">Overall roadmap progress</div>
+    <div class="pb"><div class="pbi" id="opb" style="width:0%"></div></div>
+  </div>
+  <div class="op-n"><span id="opct">0</span>%</div>
+</div>
+
+<div class="tabs">
+  <button class="tab" onclick="st('rm',this)">Roadmap</button>
+  <button class="tab" onclick="st('sc',this)">Estate &amp; Gifting Scenarios</button>
+  <button class="tab" onclick="st('gs',this)">Gift &amp; GST Exemption</button>
+  <button class="tab on" onclick="st('pp',this)">Estate Freeze</button>
+  <button class="tab" onclick="st('ad',this)">Advisor team</button>
+</div>
+
+<!-- ROADMAP -->
+<div class="pnl" id="pnl-rm">
+  <div class="info"><strong>This is a live, interactive tool</strong> — every family's road map is built around its own net worth, existing structures, and planning horizon. Click into any step below to see the level of detail a real workspace would include.</div>
+  <div class="calm">This roadmap shows the planning steps that give a multi-generational wealth transfer plan the best possible foundation. Some steps have a natural sequence; John will help the family think through timing as the plan develops.</div>
+  <div id="phases"></div>
+  <div class="br">
+    <button onclick="expandAll()">Expand all phases</button>
+    <button onclick="collapseAll()">Collapse all</button>
+  </div>
+</div>
+
+<!-- ESTATE & GIFTING SCENARIOS -->
+<div class="pnl" id="pnl-sc">
+  <div class="calm">This illustrative base case is a $40M family estate, with 25% already funded into an irrevocable Dynasty Trust and 10% earmarked for charitable giving — the rest held personally and exposed to estate tax at death. Move the sliders to explore different outcomes.</div>
+  <div class="sg">
+    <div class="sc"><label>Family net worth ($M)</label><input type="range" id="nw" min="5" max="500" step="5" value="40" oninput="document.getElementById('nwv').textContent='$'+this.value+'M';scCalc()"><div class="sv" id="nwv">$40M</div></div>
+    <div class="sc"><label>Already in irrevocable trust (%)</label><input type="range" id="trp" min="0" max="60" step="5" value="25" oninput="document.getElementById('trpv').textContent=this.value+'%';scCalc()"><div class="sv" id="trpv">25%</div></div>
+    <div class="sc"><label>Charitable gift (%)</label><input type="range" id="chp" min="0" max="30" step="5" value="10" oninput="document.getElementById('chpv').textContent=this.value+'%';scCalc()"><div class="sv" id="chpv">10%</div></div>
+  </div>
+  <div class="rg" id="rg"></div>
+  <div class="note" id="sn"></div>
+</div>
+
+<!-- GIFT & GST EXEMPTION -->
+<div class="pnl" id="pnl-gs">
+  <div class="success"><strong>2026 federal gift, estate &amp; GST exemption.</strong> The federal basic exclusion amount is $15,000,000 per individual for 2026 (unified across gift, estate, and generation-skipping transfer tax) — $30,000,000 for a married couple using portability or gift-splitting. Funding a Dynasty Trust now and allocating GST exemption to it on a timely filed Form 709 shelters all future growth from transfer tax at every generation, indefinitely.</div>
+  <div class="qg" id="qg"></div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Taxpayer</th><th>Exemption available (2026)</th><th>Status</th><th>Transfer tax avoided at 40%</th></tr></thead>
+      <tbody>
+        <tr><td>Individual</td><td class="gd">$15,000,000</td><td style="text-align:left;font-size:12px">Available now — allocate to trust via Form 709</td><td class="g">$6,000,000</td></tr>
+        <tr><td>Married couple (combined)</td><td class="gd">$30,000,000</td><td style="text-align:left;font-size:12px">Portability or gift-splitting election</td><td class="g">$12,000,000</td></tr>
+        <tr class="hl"><td><strong>GST exemption (same amount)</strong></td><td class="g"><strong>$15,000,000 / $30,000,000</strong></td><td style="text-align:left;font-size:12px">Allocate to Dynasty Trust to shelter perpetual growth from GST tax</td><td class="g"><strong>Every future generation</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <hr>
+  <p style="font-size:13px;font-weight:500;margin-bottom:8px">Annual exclusion gifting</p>
+  <div class="calm" style="margin-bottom:12px">The annual gift tax exclusion is $19,000 per recipient for 2026 ($38,000 per recipient if a married couple elects gift-splitting) — gifts at or below this amount use no lifetime exemption and require no gift tax return. A disciplined annual gifting program, sustained over a multi-decade horizon and across multiple beneficiaries, can move substantial value out of the taxable estate before any lifetime exemption is touched.</div>
+  <hr>
+  <p style="font-size:13px;font-weight:500;margin-bottom:8px">NY estate tax context</p>
+  <div class="calm">New York imposes its own estate tax on top of the federal tax, with a distinctive "cliff": the state's basic exclusion amount is $7,350,000 for 2026, but estates above roughly 105% of that amount (about $7,717,500) see the exclusion phased out — the closer an estate sits to the cliff, the more of the exclusion is lost, producing a punitive effective marginal rate in that band before the top statutory rate of 16% applies further up. This makes keeping assets outside the taxable estate — via the Dynasty Trust and, at the appropriate stage, an estate freeze — especially valuable for New York residents. See the Estate Freeze tab.</div>
+</div>
+
+<!-- ESTATE FREEZE -->
+<div class="pnl on" id="pnl-pp">
+  <div class="calm">Assets already funded into an irrevocable trust can keep compounding under an <strong>Estate Freeze</strong> — a well-established, easily explained structure that uses a Grantor or Non-Grantor Trust election, with no specialized insurance product required. If the family elects grantor trust status, they pay the trust's income tax personally each year — the trust grows tax-free, and the payment itself is treated as an additional tax-free gift to the trust. Combined with the assets sitting entirely outside the taxable estate, this can dramatically outperform holding everything personally. Federal and NY estate tax (40% federal above a $15M exemption; 16% NY above a $7.35M exemption, with a 105% cliff) are held fixed per current 2026 law; adjust the other illustrative assumptions below.</div>
+
+  <div class="pig">
+    <div class="pi"><label>Personal net worth outside trust ($)</label><input type="number" id="efPersonal" value="20000000" step="500000" oninput="efCalc()"></div>
+    <div class="pi"><label>Amount already in irrevocable trust ($)</label><input type="number" id="efTrust" value="10000000" step="250000" oninput="efCalc()"></div>
+    <div class="pi"><label>Age today</label><div class="pir"><input type="range" id="efAge" min="30" max="85" step="1" value="55" oninput="document.getElementById('efAgev').textContent=this.value;updateEfLifeExpectancyDefault();efCalc()"></div><span class="pv" id="efAgev">55</span></div>
+    <div class="pi"><label>Gender</label>
+      <select id="efGender" onchange="updateEfLifeExpectancyDefault();efCalc()">
+        <option value="F">Female</option>
+        <option value="M">Male</option>
+      </select>
+    </div>
+    <div class="pi"><label>Life expectancy <small style="font-weight:400;color:#888">(SSA actuarial default — adjustable)</small></label><div class="pir"><input type="range" id="efLex" min="70" max="105" step="1" value="87" oninput="document.getElementById('efLexv').textContent=this.value;efCalc()"></div><span class="pv" id="efLexv">87</span></div>
+    <div class="pi"><label>Gross investment return (% p.a.)</label><div class="pir"><input type="range" id="efGross" min="3" max="10" step="0.5" value="6.5" oninput="document.getElementById('efGrossv').textContent=parseFloat(this.value).toFixed(1)+'%';efCalc()"></div><span class="pv" id="efGrossv">6.5%</span></div>
+    <div class="pi"><label>Combined income tax rate (%)</label><div class="pir"><input type="range" id="efTax" min="20" max="50" step="0.5" value="32.0" oninput="document.getElementById('efTaxv').textContent=parseFloat(this.value).toFixed(1)+'%';efCalc()"></div><span class="pv" id="efTaxv">32.0%</span></div>
+  </div>
+
+  <div class="sum-grid">
+    <div class="sum-card worst"><div class="sum-label worst">Unplanned</div><div class="sum-title">Everything held personally — no trust</div><div class="sum-val worst" id="s1v">—</div><div class="sum-sub">Income tax on gains annually, then full Federal + NY estate tax at death before reaching the next generation</div></div>
+    <div class="sum-card mid"><div class="sum-label mid">Non-Grantor Trust</div><div class="sum-title">Trust pays its own income tax — separate taxpayer</div><div class="sum-val mid" id="s2v">—</div><div class="sum-sub">Trust assets sit outside the estate, but there's no additional tax-free gift from the family each year</div></div>
+    <div class="sum-card best"><div class="sum-label best">Grantor Trust ★</div><div class="sum-title">Family pays the trust's income tax personally</div><div class="sum-val best" id="s3v">—</div><div class="sum-sub">Each tax payment is an additional tax-free gift to the trust — and the trust passes to the next generation free of estate tax</div></div>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th style="background:#FDF3F3">Unplanned<br><small style="font-weight:400">held personally</small></th>
+          <th style="background:#F0F4FD">Non-Grantor Trust<br><small style="font-weight:400">separate taxpayer</small></th>
+          <th style="background:#EAF3DE">Grantor Trust<br><small style="font-weight:400">family pays trust's tax</small></th>
+          <th>Advantage<br>vs Unplanned</th>
+        </tr>
+      </thead>
+      <tbody id="ptb"></tbody>
+    </table>
+  </div>
+  <div class="tn" id="ptn"></div>
+  <div class="br">
+    <button onclick="alert('An irrevocable trust funded with appreciating assets today grows outside the taxable estate. If the family elects grantor trust status, paying the trust\'s income tax personally each year is treated as an additional tax-free gift to the trust — letting it compound faster while further shrinking the family\'s own taxable estate. T&amp;E counsel confirms which election fits the family\'s goals.')">Why does the estate freeze work?</button>
+    <button onclick="alert('Grantor trusts are typically drafted with a swap/toggle power. If paying the trust\'s growing tax bill would eventually deplete personal assets, the trustee can toggle the trust to non-grantor status — it then pays its own tax going forward, like the Non-Grantor Trust scenario shown here. PPLI remains available as an advanced, later-stage option for more sophisticated situations — see Advisor team.')">What if personal assets run low?</button>
+  </div>
+</div>
+
+<!-- ADVISORS -->
+<div class="pnl" id="pnl-ad">
+  <div class="calm">A well-structured wealth transfer plan works best with a co-ordinated team. John will help identify and introduce the right specialists at each stage — the family does not need everyone in place at once, the team builds naturally as the plan develops.</div>
+  <div class="ag">
+    <div class="ac"><div class="ar">Wealth strategist</div><div class="an">John Alexander</div><div class="af">Allegiance Partners</div><div class="as se">Available — book a Discovery Call</div></div>
+    <div class="ac"><div class="ar">Family office &amp; multi-generational planning</div><div class="an">Harold Hyunho Lee</div><div class="af">Allegiance Partners<br>Former Head of Family Office &amp; CIO, single-family office</div><div class="as se">Available — book a Discovery Call</div></div>
+    <div class="ac"><div class="ar">Trusts &amp; estates counsel</div><div class="an">Tim Malloy</div><div class="af">Estate &amp; Tax Planning Lab, Cleveland<br>Delaware trust situs expertise</div><div class="as st">Introduced when needed</div></div>
+    <div class="ac"><div class="ar">CPA / tax advisor</div><div class="an">James H. Yoo, CPA</div><div class="af">Managing Partner, Sebit LLP · New York</div><div class="as st">Introduced when needed</div></div>
+    <div class="ac"><div class="ar">Charitable vehicle</div><div class="an">Donor Advised Fund (DAF)</div><div class="af">Sponsor selected with John<br>if charitable giving is a goal</div><div class="as st">Optional</div></div>
+    <div class="ac"><div class="ar">Institutional trustee</div><div class="an">To be identified</div><div class="af">Delaware or South Dakota situs<br>selected with T&amp;E counsel</div><div class="as st">Introduced when needed</div></div>
+    <div class="ac"><div class="ar">PPLI structuring</div><div class="an">Malcolm Dermit — IWP Zurich</div><div class="af">Cross-border insurance &amp; structuring<br>advanced, later-stage option</div><div class="as st">Later stage — by referral</div></div>
+  </div>
+</div>
+
+<footer class="pf">Allegiance Partners &nbsp;·&nbsp; Confidential &nbsp;·&nbsp; Illustrative example for discussion purposes only &nbsp;·&nbsp; Not legal or tax advice</footer>
+
+</div>
+
+<script>
+const PH=[
+  {per:"2026",ttl:"Foundations",st:"a",ms:[
+    {t:"Basic estate plan",s:"Will, power of attorney, healthcare proxy. Worth revisiting any pre-marital agreement or beneficiary designation that hasn't been updated in several years.",tg:["lg"]},
+    {t:"Irrevocable Dynasty Trust — fund now",s:"A Delaware perpetual trust funded with liquid or income-producing assets at today's values — removing all future growth from the taxable estate. Usually the most time-sensitive planning step.",tg:["tr"]},
+    {t:"Grantor vs non-grantor trust election",s:"As a grantor trust, the family pays the trust's income tax personally each year — an additional tax-free gift to the trust. As a non-grantor trust, the trust pays its own tax as a separate taxpayer. T&amp;E counsel advises which fits the family's goals.",tg:["tx","tr"]},
+    {t:"Appoint T&amp;E counsel",s:"Trusts and estates specialist with Delaware situs expertise. Often the most important advisor appointment in the plan.",tg:["lg"]},
+    {t:"Appoint CPA / tax advisor",s:"Tax specialist who can model the gift/GST exemption allocation, annual gifting program, and the NY estate tax cliff effect.",tg:["tx"]},
+  ]},
+  {per:"2026–2027",ttl:"Charitable structure",st:"f",ms:[
+    {t:"Establish Donor Advised Fund (DAF)",s:"A DAF is often the right vehicle at this stage — fast to establish, simple to run. John helps identify the right sponsor and confirms the gift strategy with T&amp;E counsel.",tg:["tx"]},
+    {t:"Establish charitable vehicle",s:"If a private foundation or charitable remainder trust fits the family's goals better than a DAF, set up and fund it — in place well ahead of any liquidity event.",tg:["lg","tx"]},
+    {t:"Charitable gift strategy — appreciated assets",s:"Gifting appreciated assets rather than cash avoids capital gains entirely and produces a full fair-market-value income tax deduction, subject to AGI limits.",tg:["tx"]},
+    {t:"Dynasty Trust continues to receive annual gifts",s:"Sustained annual exclusion gifts ($19,000/recipient, $38,000 if gift-splitting) keep funding the trust without using any lifetime exemption.",tg:["tr"]},
+  ]},
+  {per:"2027–2028",ttl:"Lifetime gifting &amp; trust funding",st:"f",ms:[
+    {t:"Allocate lifetime gift/GST exemption to trust",s:"A timely filed Form 709 allocates GST exemption to the Dynasty Trust, sheltering all future growth from generation-skipping transfer tax indefinitely.",tg:["tx","tr"]},
+    {t:"Valuation discount analysis",s:"For closely-held business interests, real estate, or other illiquid assets, a qualified appraiser can support minority-interest and marketability discounts on gifted or sold interests.",tg:["tx"]},
+    {t:"Beneficiary decisions",s:"Children and/or grandchildren are typically the intended beneficiaries. John helps families think through the right structure at their own pace.",tg:["tr"]},
+    {t:"Confirm NY estate tax position",s:"With a $7.35M cliff exemption, keeping assets outside the taxable estate via the Dynasty Trust is important. The CPA models the estate position under current law.",tg:["tx"]},
+  ]},
+  {per:"2028–2029",ttl:"Governance &amp; succession",st:"f",ms:[
+    {t:"Family governance framework",s:"A written family mission statement and decision-making framework — especially valuable once multiple generations are named as beneficiaries.",tg:["lg"]},
+    {t:"Successor trustee decisions",s:"Confirm the succession plan for trusteeship — an institutional trustee, a family member, or a combination — with T&amp;E counsel.",tg:["tr"]},
+    {t:"Coordinate with existing advisors",s:"Confirm the investment manager, private banker, and any existing counsel are all working from the same plan.",tg:["lg"]},
+  ]},
+  {per:"Ongoing",ttl:"Implementation &amp; review",st:"f",ms:[
+    {t:"Fund trusts with target assets",s:"Complete the transfer of the assets identified in the planning process into the Dynasty Trust and any charitable vehicle.",tg:["tr"]},
+    {t:"File Form 709 gift tax returns",s:"Report all gifts to the trust and any direct gifts above the annual exclusion, allocating lifetime exemption as planned.",tg:["tx"]},
+    {t:"Full advisor alignment",s:"T&amp;E counsel, CPA, and John all working from the same plan before anything is signed.",tg:["lg"]},
+    {t:"Annual review cadence",s:"Revisit the plan each year — exemption amounts, family circumstances, and tax law all change over a multi-decade horizon.",tg:["lg"]},
+    {t:"Estate Freeze deployment",s:"The Dynasty Trust's Grantor Trust election is confirmed with counsel — locking in tax-free growth for the next generation while the family covers the trust's tax bill personally. PPLI remains available as a more advanced, later-stage option for families who outgrow this default approach.",tg:["pp"]},
+  ]},
+];
+
+const TGC={tr:"ttr",tx:"ttx",lg:"tlg",pp:"tpp"};
+const TGL={tr:"Trust",tx:"Tax",lg:"Legal",pp:"Est. Freeze"};
+let CK={};
+
+function bld(){
+  const el=document.getElementById('phases');el.innerHTML='';
+  let tot=0,dn=0;
+  PH.forEach((ph,pi)=>{
+    const d=ph.ms.filter((_,mi)=>CK[pi+'-'+mi]).length,n=ph.ms.length;
+    tot+=n;dn+=d;
+    const sc=d===n?'dd':(d>0||ph.st==='a'?'da':'df');
+    const ic=d===n?'&#10003;':(pi+1);
+    const bod=ph.ms.map((m,mi)=>{
+      const k=pi+'-'+mi,c=CK[k]?'on':'';
+      const tgs=(m.tg||[]).map(t=>TGC[t]?`<span class="tag ${TGC[t]}">${TGL[t]}</span>`:'').join('');
+      return `<div class="ms"><div class="ck ${c}" onclick="tg('${k}',this)">${c?'&#10003;':''}</div><div class="msb"><div class="mst">${m.t}${tgs}</div><div class="mss">${m.s}</div></div></div>`;
+    }).join('');
+    el.innerHTML+=`<div class="phase"><div class="phh" onclick="tp(this)"><div class="dot ${sc}">${ic}</div><div class="phi"><div class="php">${ph.per}</div><div class="pht">${ph.ttl}</div></div><div class="phc">${d}/${n} complete</div></div><div class="phb" style="${pi===0?'':'display:none'}">${bod}</div></div>`;
+  });
+  const pct=Math.round(dn/tot*100);
+  document.getElementById('opct').textContent=pct;
+  document.getElementById('opb').style.width=pct+'%';
+}
+function tp(h){const b=h.nextElementSibling;b.style.display=b.style.display==='none'?'block':'none';}
+function tg(k,el){CK[k]=!CK[k];el.classList.toggle('on');el.innerHTML=CK[k]?'&#10003;':'';bld();}
+function st(id,el){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));document.querySelectorAll('.pnl').forEach(p=>p.classList.remove('on'));el.classList.add('on');document.getElementById('pnl-'+id).classList.add('on');}
+function expandAll(){document.querySelectorAll('.phb').forEach(b=>b.style.display='block');}
+function collapseAll(){document.querySelectorAll('.phb').forEach((b,i)=>{b.style.display=i===0?'block':'none';});}
+
+function fm(n){
+  const a=Math.abs(n),s=n<0?'-':'';
+  if(a>=1e9)return s+'$'+(a/1e9).toFixed(2)+'B';
+  if(a>=1e6)return s+'$'+(a/1e6).toFixed(1)+'M';
+  return s+'$'+Math.round(a).toLocaleString();
+}
+
+// Fixed 2026 statutory estate-tax facts.
+const FED_EXEMPT=15000000, FED_RATE=0.40, NY_EXEMPT=7350000, NY_RATE=0.16, NY_CLIFF=1.05;
+function estateTax(val){
+  const fed=Math.max(0,(val-FED_EXEMPT)*FED_RATE);
+  const ny=val>NY_EXEMPT*NY_CLIFF?val*NY_RATE:0;
+  return fed+ny;
+}
+
+function scCalc(){
+  const val=+document.getElementById('nw').value*1e6;
+  const trp=+document.getElementById('trp').value/100;
+  const chp=+document.getElementById('chp').value/100;
+  const persp=Math.max(0,1-trp-chp);
+  const trustAmt=val*trp, charityAmt=val*chp, personal=val*persp;
+  const tax=estateTax(personal);
+  const netPersonal=personal-tax;
+  const familyWealth=netPersonal+trustAmt+charityAmt;
+  const unplannedTax=estateTax(val);
+  const unplanned=val-unplannedTax;
+  document.getElementById('rg').innerHTML=`
+    <div class="rc"><div class="rl">Family net worth</div><div class="rv b">${fm(val)}</div></div>
+    <div class="rc"><div class="rl">Held personally (taxable)</div><div class="rv b">${fm(personal)}</div></div>
+    <div class="rc"><div class="rl">In irrevocable trust</div><div class="rv g">${fm(trustAmt)}</div></div>
+    <div class="rc"><div class="rl">Charitable gift</div><div class="rv gd">${fm(charityAmt)}</div></div>
+    <div class="rc"><div class="rl">Estate tax on personal share</div><div class="rv r">${fm(tax)}</div></div>
+    <div class="rc"><div class="rl">Net to heirs — personal share</div><div class="rv b">${fm(netPersonal)}</div></div>
+    <div class="rc"><div class="rl">Total family wealth</div><div class="rv g">${fm(familyWealth)}</div></div>
+    <div class="rc"><div class="rl">Without any planning</div><div class="rv r">${fm(unplanned)}</div></div>
+    <div class="rc"><div class="rl">Planning advantage</div><div class="rv g">+${fm(familyWealth-unplanned)}</div></div>`;
+  document.getElementById('sn').innerHTML=`Estate split: ${Math.round(persp*100)}% held personally &middot; ${Math.round(trp*100)}% in trust &middot; ${Math.round(chp*100)}% charitable. Planning saves <strong>${fm(familyWealth-unplanned)}</strong> compared to holding everything personally at death &mdash; a <strong>${Math.round((familyWealth-unplanned)/Math.max(unplanned,1)*100)}% improvement</strong>. Both federal (40% above $15M) and NY (16% above the $7.35M cliff) estate tax are held fixed at 2026 statutory levels.`;
+}
+
+function bldQ(){
+  document.getElementById('qg').innerHTML=`
+    <div class="qc"><div class="ql">Individual exemption (2026)</div><div class="qv">$15,000,000</div></div>
+    <div class="qc"><div class="ql">Married couple (combined)</div><div class="qv">$30,000,000</div></div>
+    <div class="qc"><div class="ql">GST exemption</div><div class="qv">Same amount</div></div>
+    <div class="qc"><div class="ql">Annual exclusion gift</div><div class="qv">$19,000 / recipient</div></div>
+    <div class="qc"><div class="ql">Annual exclusion — gift-split</div><div class="qv">$38,000 / recipient</div></div>
+    <div class="qc"><div class="ql">NY estate exemption (2026)</div><div class="qv">$7,350,000</div></div>
+    <div class="qc"><div class="ql">NY cliff threshold (105%)</div><div class="qv">~$7,717,500</div></div>`;
+}
+
+// SSA 2023 Period Life Table (2026 Trustees Report), ssa.gov/oact/STATS/table4c6.html.
+// age -> [male LE, female LE], in remaining years.
+const SSA_LIFE_TABLE = {
+  0:[75.79,81.06],1:[75.25,80.48],2:[74.28,79.51],3:[73.31,78.53],4:[72.33,77.54],
+  5:[71.34,76.55],6:[70.35,75.56],7:[69.36,74.57],8:[68.37,73.58],9:[67.38,72.59],
+  10:[66.39,71.59],11:[65.39,70.60],12:[64.40,69.61],13:[63.41,68.62],14:[62.43,67.63],
+  15:[61.45,66.64],16:[60.48,65.66],17:[59.51,64.67],18:[58.56,63.69],19:[57.62,62.72],
+  20:[56.69,61.74],21:[55.76,60.77],22:[54.83,59.80],23:[53.90,58.83],24:[52.98,57.86],
+  25:[52.06,56.90],26:[51.14,55.93],27:[50.23,54.97],28:[49.32,54.00],29:[48.41,53.04],
+  30:[47.50,52.08],31:[46.60,51.13],32:[45.70,50.18],33:[44.81,49.23],34:[43.91,48.28],
+  35:[43.02,47.34],36:[42.13,46.39],37:[41.24,45.45],38:[40.36,44.51],39:[39.47,43.58],
+  40:[38.59,42.64],41:[37.71,41.71],42:[36.83,40.78],43:[35.95,39.86],44:[35.08,38.93],
+  45:[34.21,38.01],46:[33.34,37.10],47:[32.48,36.18],48:[31.62,35.27],49:[30.76,34.36],
+  50:[29.90,33.45],51:[29.05,32.55],52:[28.21,31.66],53:[27.38,30.77],54:[26.55,29.89],
+  55:[25.73,29.01],56:[24.92,28.14],57:[24.12,27.28],58:[23.34,26.42],59:[22.56,25.57],
+  60:[21.79,24.73],61:[21.04,23.90],62:[20.29,23.08],63:[19.56,22.27],64:[18.83,21.46],
+  65:[18.12,20.66],66:[17.41,19.87],67:[16.71,19.08],68:[16.02,18.30],69:[15.34,17.53],
+  70:[14.66,16.76],71:[14.00,16.01],72:[13.34,15.26],73:[12.69,14.53],74:[12.05,13.81],
+  75:[11.42,13.10],76:[10.80,12.41],77:[10.19,11.73],78:[9.61,11.08],79:[9.04,10.44],
+  80:[8.50,9.82],81:[7.97,9.22],82:[7.46,8.64],83:[6.97,8.08],84:[6.50,7.54],
+  85:[6.04,7.02],86:[5.61,6.53],87:[5.20,6.05],88:[4.81,5.61],89:[4.45,5.19],
+  90:[4.11,4.80],91:[3.80,4.44],92:[3.50,4.10],93:[3.23,3.79],94:[2.99,3.50],
+  95:[2.77,3.23],96:[2.58,2.99],97:[2.41,2.77],98:[2.27,2.57],99:[2.15,2.39],
+  100:[2.04,2.23]
+};
+function ssaExpectedAgeAtDeath(age,isFemale){
+  const a=Math.max(0,Math.min(Math.round(age),100));
+  const row=SSA_LIFE_TABLE[a];
+  return Math.round(a+(isFemale?row[1]:row[0]));
+}
+function updateEfLifeExpectancyDefault(){
+  const age=+document.getElementById('efAge').value;
+  const isFemale=document.getElementById('efGender').value==='F';
+  const life=ssaExpectedAgeAtDeath(age,isFemale);
+  document.getElementById('efLex').value=life;
+  document.getElementById('efLexv').textContent=life;
+}
+
+function efCompound(start,rate,yrs){return start*Math.pow(1+rate,yrs);}
+
+// Simulates the grantor trust election year by year. The trust grows tax-free while the
+// family pays its tax bill personally; because that bill compounds at the pre-tax rate
+// while personal assets only compound after-tax, personal assets can eventually be
+// depleted on a long enough horizon. Real grantor trusts are drafted with a swap/toggle
+// power for exactly this — modeled here by flooring personal assets at $0 and switching
+// the trust to non-grantor-style growth.
+function efGrantorAtYear(trust,personal,taxDrag,netTaxed,grantorNet,yr){
+  let gt=trust, gp=personal, toggleYear=null;
+  for(let i=1;i<=yr;i++){
+    if(toggleYear===null){
+      const gtTax=gt*taxDrag;
+      const gtNext=gt*(1+grantorNet);
+      const gpNext=gp*(1+netTaxed)-gtTax;
+      if(gpNext<0){
+        toggleYear=i; gp=0; gt=gt*(1+netTaxed);
+      } else { gt=gtNext; gp=gpNext; }
+    } else { gt=gt*(1+netTaxed); gp=0; }
+  }
+  const tax=estateTax(gp);
+  return {trust:gt, personal:gp, tax, family:(gp-tax)+gt, toggleYear};
+}
+
+function efCalc(){
+  const personal=+document.getElementById('efPersonal').value;
+  const trust=+document.getElementById('efTrust').value;
+  const age=+document.getElementById('efAge').value;
+  const lex=+document.getElementById('efLex').value;
+  const gross=+document.getElementById('efGross').value/100;
+  const taxRate=+document.getElementById('efTax').value/100;
+  const years=Math.max(1,lex-age);
+  const taxDrag=taxRate*gross, netTaxed=gross-taxDrag, grantorNet=gross;
+
+  const upEstate=efCompound(personal+trust,netTaxed,years);
+  const upTax=estateTax(upEstate);
+  const upFamily=upEstate-upTax;
+
+  const ngTrust=efCompound(trust,netTaxed,years);
+  const ngPersonal=efCompound(personal,netTaxed,years);
+  const ngTax=estateTax(ngPersonal);
+  const ngFamily=(ngPersonal-ngTax)+ngTrust;
+
+  const gran=efGrantorAtYear(trust,personal,taxDrag,netTaxed,grantorNet,years);
+
+  document.getElementById('s1v').textContent=fm(upFamily);
+  document.getElementById('s2v').textContent=fm(ngFamily);
+  document.getElementById('s3v').textContent=fm(gran.family);
+
+  const SH=[5,10,15,20,25,30,35,40],rows=[];
+  SH.filter(y=>y<=years).forEach(y=>{
+    const u=efCompound(personal+trust,netTaxed,y), uf=u-estateTax(u);
+    const nt=efCompound(trust,netTaxed,y), np=efCompound(personal,netTaxed,y), nf=(np-estateTax(np))+nt;
+    const g=efGrantorAtYear(trust,personal,taxDrag,netTaxed,grantorNet,y);
+    rows.push({y,age:age+y,uf,nf,gf:g.family});
+  });
+  if(!SH.includes(years)) rows.push({y:years,age:age+years,uf:upFamily,nf:ngFamily,gf:gran.family});
+  document.getElementById('ptb').innerHTML=rows.map(r=>`<tr><td>Year ${r.y} (age ${r.age})</td><td class="r">${fm(r.uf)}</td><td class="b">${fm(r.nf)}</td><td class="g">${fm(r.gf)}</td><td class="gd">${fm(r.gf-r.uf)}</td></tr>`).join('');
+
+  const mult=(gran.family/Math.max(upFamily,1)).toFixed(1);
+  let toggleNote='';
+  if(gran.toggleYear){
+    toggleNote=`<br><small style="display:block;margin-top:6px;color:#888">By Year ${gran.toggleYear} (age ${age+gran.toggleYear}), the trust's tax bill would exceed personal assets — this model assumes a toggle to non-grantor status at that point, per a swap/toggle power built into the trust.</small>`;
+  }
+  document.getElementById('ptn').innerHTML=`At life expectancy (age ${lex}, ${years} years): the Grantor Trust election delivers <strong>${fm(gran.family)}</strong> to the next generation &mdash; compared to <strong>${fm(upFamily)}</strong> held personally with no planning. That is <strong>${fm(gran.family-upFamily)} more</strong>, a <strong>${mult}&times; improvement</strong>. Life expectancy defaults from the SSA 2023 Period Life Table based on age and gender, and is adjustable.${toggleNote}`;
+}
+
+bld();scCalc();bldQ();updateEfLifeExpectancyDefault();efCalc();
+</script>
+</body>
+</html>
